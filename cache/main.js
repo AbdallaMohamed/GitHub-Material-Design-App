@@ -81,7 +81,7 @@ angular.module('ngChurchDesk').controller('userCtrl', ["$scope", "$stateParams",
     $scope.showFollowers = function (ev) {
         $mdDialog.show({
             controller: 'followersModal',
-            templateUrl: 'src/user/views/followers.partial.html',
+            templateUrl: 'user/views/followers.partial.html',
             parent: angular.element(window.body),
             targetEvent: ev,
             clickOutsideToClose: true,
@@ -96,7 +96,7 @@ angular.module('ngChurchDesk').controller('userCtrl', ["$scope", "$stateParams",
     $scope.showRepositories = function (ev) {
         $mdDialog.show({
             controller: 'repositoriesModal',
-            templateUrl: 'src/user/views/repositories.partial.html',
+            templateUrl: 'user/views/repositories.partial.html',
             parent: angular.element(window.body),
             targetEvent: ev,
             clickOutsideToClose: true,
@@ -186,7 +186,7 @@ angular.module('ngChurchDesk').config(["$stateProvider", function ($stateProvide
     $stateProvider
         .state('users', {
             url: '/Users',
-            templateUrl: 'src/users/views/users.partial.html',
+            templateUrl: 'users/views/users.partial.html',
             controller: 'usersCtrl',
             title: 'Users'
         });
@@ -195,7 +195,7 @@ angular.module('ngChurchDesk').config(["$stateProvider", function ($stateProvide
     $stateProvider
         .state('user', {
             url: '/User/:username',
-            templateUrl: 'src/user/views/user.partial.html',
+            templateUrl: 'user/views/user.partial.html',
             controller: 'userCtrl',
             title: 'User Details'
         });
@@ -244,7 +244,7 @@ angular.module('ngChurchDesk').config(["$stateProvider", function ($stateProvide
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: 'src/home/views/home.partial.html',
+            templateUrl: 'home/views/home.partial.html',
             controller: 'homeCtrl',
             title: 'Home Page'
         });
@@ -253,7 +253,7 @@ angular.module('ngChurchDesk').config(["$stateProvider", function ($stateProvide
     $stateProvider
         .state('documentation', {
             url: '/Documentation',
-            templateUrl: 'src/documentation/views/documentation.partial.html',
+            templateUrl: 'documentation/views/documentation.partial.html',
             controller: 'documentationCtrl',
             title: 'Documentation'
         });

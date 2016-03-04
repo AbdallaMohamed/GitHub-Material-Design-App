@@ -10,7 +10,7 @@ angular.module('ngChurchDesk').controller('userCtrl', function ($scope, $statePa
     $scope.showFollowers = function (ev) {
         $mdDialog.show({
             controller: 'followersModal',
-            templateUrl: 'src/user/views/followers.partial.html',
+            templateUrl: 'user/views/followers.partial.html',
             parent: angular.element(window.body),
             targetEvent: ev,
             clickOutsideToClose: true,
@@ -25,7 +25,7 @@ angular.module('ngChurchDesk').controller('userCtrl', function ($scope, $statePa
     $scope.showRepositories = function (ev) {
         $mdDialog.show({
             controller: 'repositoriesModal',
-            templateUrl: 'src/user/views/repositories.partial.html',
+            templateUrl: 'user/views/repositories.partial.html',
             parent: angular.element(window.body),
             targetEvent: ev,
             clickOutsideToClose: true,
