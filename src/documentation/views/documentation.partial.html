@@ -1,0 +1,49 @@
+<md-content flex layout-padding layout="column">
+    <h3 class="md-display-2" layout="row" layout-align="center start">Documentation</h3>
+    <md-content>
+        <h4>
+            Folder Structure
+        </h4>
+        <p class="md-body-1">
+            I grouped files by feature, so for example
+            <ul>
+                <li>home (The view and the controller of the home view)</li>
+                <li>sideNav (The view and the controller of the side nav)</li>
+                <li>users (Viewing And Searching For Users)</li>
+                <li>user (Details of a certain user, includes modals for the user's repositories and followers)</li>
+                <li>documentation (The view and the controller of the documentation view)</li>
+            </ul>
+        </p>
+        
+        <md-divider></md-divider>
+        
+        <h4>
+            Tasks Automation
+        </h4>
+        <p class="md-body-1">
+            <ul>
+                <li><strong>Bower</strong> for packages managment</li>
+                <li><strong>Gulp</strong> for tasks automation</li>
+                <li>A set of tasks in the gulpfile.js to handle all the required tasks</li>
+                <li>All HTML files are minimized and put in a template cache</li>
+                <li>All JS files are minimized, uglifiedand concatenated</li>
+                <li>All SASS files are compiles and all CSS files are minimized and concatenated</li>
+                <li>Executing the task <strong>"deployApp"</strong> packages the whole app into 2 files: a dist.js and a dist.css</li>
+            </ul>
+        </p>
+        <md-divider></md-divider>
+        
+        <h4>
+            Angular App
+        </h4>
+        <p class="md-body-1">
+            <ul>
+                <li>UI-Router is used for routing.</li>
+                <li>Used $resource for consuming the RESTful API.</li>
+                <li>Used the directives in Angular-Material for the UI components.</li>
+                <li>Used ngAnimate for the fade-in animations.</li>
+            </ul>
+        </p>
+        
+    </md-content>
+</md-content>
