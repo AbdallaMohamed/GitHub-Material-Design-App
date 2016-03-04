@@ -1,0 +1,45 @@
+<!doctype >
+<html html ng-app="ngChurchDesk">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ChurchDesk Front-End Challenge</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="release/dist.css">
+</head>
+
+<body layout="row" ng-cloak ng-controller="appController">
+
+    <!--START: Side Navigation-->
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left">
+        <div ng-include="'src/sideNav/views/sideNav.partial.html'" ng-controller="sideNavController"></div>
+    </md-sidenav>
+    <!--End: Side Navigation-->
+
+    <!--START: Content-->
+    <md-content flex layout="column">
+        <!--START: Toolbar-->
+        <md-toolbar md-scroll-shrink class="md-info">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" aria-label="SideNav" ng-click="openSideNav()">
+                    <i class="material-icons">menu</i>
+                </md-button>
+                <h2>
+                    <span>{{getToolbarTitle()}}</span>
+                </h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+        <!--END: Toolbar-->
+        
+        <ui-view>
+        </ui-view>
+    </md-content>
+    <!--END: Content-->
+
+    <script src="release/dist.js"></script>
+</body>
+
+</html>

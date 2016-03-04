@@ -1,0 +1,40 @@
+<md-dialog ng-cloak>
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Repositories</h2>
+                <span flex></span>
+                <md-button ng-click="close()">
+                    <ng-md-icon icon="close"></ng-md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div ng-show="loading" layout-padding>
+                <div layout="row" layout-sm="column" layout-align="space-around">
+                    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                </div>
+            </div>
+            <md-content ng-hide="loading">
+                <md-list>
+                    <md-subheader class="md-no-sticky">{{repositories.length}} repositories.</md-subheader>
+                    <md-list-item class="md-3-line" ng-repeat="repository in repositories">
+                        <img ng-src="{{repository.owner.avatar_url}}" class="md-avatar" alt="{{repository.owner.name}}" />
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{repository.name}}</h3>
+                            <h4>{{repository.language}}</h4>
+                            <a ng-href="{{repository.html_url}}">{{repository.html_url}}</a>
+                        </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                </md-list>
+            </md-content>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="close()" style="margin-right:20px;" aria-label="Close">
+                Close
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

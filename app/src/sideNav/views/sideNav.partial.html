@@ -1,0 +1,43 @@
+<header>
+    <md-content layout="column" layout-align="center center">
+        <div class="layout-padding" style="height: 230px; 
+                    width:100%">
+            <div style="background-image: url('https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        height: 100%;
+                        background-position-y: 50%;
+                        background-position-x: 50%;"></div>
+        </div>
+        <h1 class="md-heading">Github Client</h1>
+    </md-content>
+</header>
+<md-divider></md-divider>
+<md-menu-content layout="column">
+    <md-menu-item>
+        <md-button ng-click="itemClicked('home')" layout="row" layout-align="start center" ng-class="{'md-accent md-hue-3' : isInState('home')}">
+            <ng-md-icon icon="home"></ng-md-icon>
+            <span flex>Home</span>
+        </md-button>
+    </md-menu-item>
+    <md-menu-item>
+        <md-button ng-click="itemClicked('users')" layout="row" layout-align="start center" ng-class="{'md-accent md-hue-3' : isInState('users')}">
+            <ng-md-icon icon="people"></ng-md-icon>
+            <span flex>Users</span>
+        </md-button>
+    </md-menu-item>
+    <md-menu-item>
+        <md-button ng-click="itemClicked('repositories')" layout="row" layout-align="start center" ng-class="{'md-accent md-hue-3' : isInState('repositories')}">
+            <ng-md-icon icon="github-box"></ng-md-icon>
+            <span flex>Repositories</span>
+
+
+        </md-button>
+    </md-menu-item>
+    <md-menu-item>
+        <md-button ng-click="itemClicked('documentation')" layout="row" layout-align="start center" ng-class="{'md-accent md-hue-3' : isInState('documentation')}">
+            <ng-md-icon icon="help"></ng-md-icon>
+            <span flex>Documentation</span>
+        </md-button>
+    </md-menu-item>
+</md-menu-content>

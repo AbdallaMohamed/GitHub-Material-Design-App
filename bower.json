@@ -1,0 +1,28 @@
+{
+  "name": "cd-challenge",
+  "version": "0.0.0",
+  "homepage": "https://github.com/AbdallaMohamed/cd-challenge",
+  "authors": [
+    "Abdalla Mohamed El-Abd <abdalla.mohamed.elabd@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-ui-router": "~0.2.18",
+    "angular-animate": "~1.5.0",
+    "angular-aria": "~1.5.0",
+    "angular-messages": "~1.5.0",
+    "angular-material": "~1.0.5",
+    "angular-resource": "~1.5.0",
+    "angular-loading-bar": "~0.8.0",
+    "angular-material-icons": "~0.6.0",
+    "svg-morpheus": "~0.1.8"
+  }
+}

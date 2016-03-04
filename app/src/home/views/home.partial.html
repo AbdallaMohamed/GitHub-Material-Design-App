@@ -1,0 +1,76 @@
+<md-content flex layout-bleed layout="column">
+    <h3 class="md-display-3" layout="row" layout-align="center start">GitHub Client</h3>
+    <md-content>
+        <md-list>
+            <md-divider></md-divider>
+            <md-list-item class="md-2-line">
+
+
+                <div class="md-list-item-text" layout-padding layout="column" layout-align="start start">
+                    <h3>Author: Abdalla Mohamed El-Abd 
+                        
+                    </h3>
+                    <p>
+                        2/24/2106
+                    </p>
+                    <md-button class="md-raised md-primary" href="https://www.linkedin.com/in/abdallamohamed91" target="_blank">
+                        My LinkedIn
+                    </md-button>
+                </div>
+            </md-list-item>
+
+            <md-divider></md-divider>
+            <md-subheader>Highlights of the client:</md-subheader>
+            <md-list-item class="md-2-line">
+                <ng-md-icon icon="github-circle" size="40" class="md-avatar"></ng-md-icon>
+                <div class="md-list-item-text">
+                    <h3>Material Design</h3>
+                    <p>
+                        Designed according to the Material Design specs using <a href="https://material.angularjs.org" target="_blank">angular-material</a>.
+                    </p>
+                </div>
+            </md-list-item>
+
+            <md-list-item class="md-2-line">
+                <ng-md-icon icon="github-circle" size="40" class="md-avatar"></ng-md-icon>
+                <div class="md-list-item-text">
+                    <h3>Responsiveness</h3>
+                    <p>
+                        A Single-Page App, with a collapsable side navigation and responsive design.
+                    </p>
+                </div>
+            </md-list-item>
+
+            <md-divider></md-divider>
+
+            <md-subheader>Things to do with the client :</md-subheader>
+            <md-list-item class="md-2-line" ui-sref="users" layout-bleed>
+                <ng-md-icon icon="github-circle" size="40" class="md-avatar"></ng-md-icon>
+                <div class="md-list-item-text">
+                    <h3>Search for user</h3>
+                </div>
+            </md-list-item>
+
+            <md-list-item class="md-2-line" ui-sref="repositories" layout-bleed>
+                <ng-md-icon icon="github-circle" size="40" class="md-avatar"></ng-md-icon>
+                <div class="md-list-item-text">
+                    <h3>Search for repository</h3>
+                </div>
+            </md-list-item>
+
+            <md-list-item class="md-2-line" ui-sref="user({username: 'AbdallaMohamed'})">
+                <ng-md-icon icon="github-circle" size="40" class="md-avatar"></ng-md-icon>
+                <div class="md-list-item-text">
+                    <h3>Show Details of User</h3>
+                </div>
+            </md-list-item>
+            <md-list-item class="md-2-line" ui-sref="user({username: 'AbdallaMohamed'})">
+                <ng-md-icon icon="github-circle" size="40" class="md-avatar"></ng-md-icon>
+                <div class="md-list-item-text">
+                    <h3>Show the user's followers and repositories through a modal</h3>
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+        </md-list>
+    </md-content>
+</md-content>

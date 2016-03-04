@@ -1,0 +1,97 @@
+<div ng-show="loading" layout-padding>
+    <div layout="row" layout-sm="column" layout-align="space-around">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+</div>
+
+<md-content class="md-padding" layout="column" ng-hide="loading">
+    <md-card>
+        <md-card-header layout="row" layout-xs="column" layout="space-between center">
+            <md-card-avatar>
+                <img ng-src="{{user.avatar_url}}" class="md-user-avatar" />
+            </md-card-avatar>
+
+            <md-card-header-text flex="grow">
+                <span class="md-title">{{user.name}}</span>
+                <a class="md-subhead" ng-href="{{user.html_url}}" target="_blank">
+                    {{user.html_url}}
+                </a>
+            </md-card-header-text>
+
+            <md-card-header-text layout="column" flex="20">
+                <span class="md-body-2">Registered at: </span>
+                <span class="md-subhead">
+                    {{user.created_at | date: 'short'}}
+                </span>
+            </md-card-header-text>
+        </md-card-header>
+        <md-divider></md-divider>
+        <md-list layout="column" class="profile-card layout-bleed">
+
+
+            <div class="md-title" layout="row" layout-padding>
+                <ng-md-icon icon="person"></ng-md-icon>
+                <span flex="25">Name</span>
+                <span class="md-subhead" flex>
+                    {{user.name}}
+                </span>
+            </div>
+            <md-divider></md-divider>
+            <div class="md-title" layout="row" layout-padding>
+                <ng-md-icon icon="location_on"></ng-md-icon>
+                <span flex="25">Location</span>
+                <span class="md-subhead" flex>
+                    {{user.location}}
+                </span>
+            </div>
+            <md-divider></md-divider>
+
+            <div class="md-title" layout="row" layout-padding>
+                <ng-md-icon icon="work"></ng-md-icon>
+                <span flex="25">Company</span>
+                <span class="md-subhead" flex>
+                    {{user.company}}
+                </span>
+            </div>
+            <md-divider></md-divider>
+
+            <div class="md-title" layout="row" layout-padding>
+                <ng-md-icon icon="email"></ng-md-icon>
+                <span flex="25">Email</span>
+                <span class="md-subhead" flex>
+                    {{user.email}}
+                </span>
+            </div>
+            <md-divider></md-divider>
+
+            <div class="md-title" layout="row" layout-padding>
+                <ng-md-icon icon="person_outline"></ng-md-icon>
+                <span flex="25">Blog</span>
+                <a class="md-subhead" flex ng-href="{{user.blog}}">
+                    {{user.blog}}
+                </a>
+            </div>
+
+            <md-divider></md-divider>
+
+            <md-list-item class="md-title" layout="row" ng-click="showRepositories($event)">
+                <ng-md-icon icon="github-box" layout-bleed></ng-md-icon>
+                <span flex="25">Public Repositories</span>
+                <a class="md-subhead md-primary" flex layout-bleed>
+                    {{user.public_repos}} Repositories
+                </a>
+            </md-list-item>
+
+
+            <md-divider></md-divider>
+
+            <md-list-item class="md-title" layout="row" ng-click="showFollowers($event)">
+                <ng-md-icon icon="people" layout-bleed></ng-md-icon>
+                <span flex="25" layout-bleed>Followers</span>
+                <a class="md-subhead md-primary" flex layout-bleed>
+                    {{user.followers}} Followers
+                </a>
+            </md-list-item>
+        </md-list>
+    </md-card>
+</md-content>
