@@ -1,4 +1,4 @@
-angular.module('ngChurchDesk').controller('followersModal', function ($scope, $mdDialog, user, User) {
+angular.module('ngGitHub').controller('followersModal', function ($scope, $mdDialog, user, User) {
     // a loading indicator flag
     $scope.loading = true;
     

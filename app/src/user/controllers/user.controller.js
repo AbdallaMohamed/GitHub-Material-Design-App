@@ -1,4 +1,4 @@
-angular.module('ngChurchDesk').controller('userCtrl', function ($scope, $stateParams, User, $mdMedia, $mdDialog) {
+angular.module('ngGitHub').controller('userCtrl', function ($scope, $stateParams, User, $mdMedia, $mdDialog) {
     // a loading indicator flag
     $scope.loading = true;
     // get the details of the user

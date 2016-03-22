@@ -1,14 +1,8 @@
-<div ng-show="loading" layout-padding>
-    <div layout="row" layout-sm="column" layout-align="space-around">
-        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-    </div>
-</div>
-
-<md-content class="md-padding" layout="column" ng-hide="loading">
+<md-content flex class="md-padding" layout="column" ng-hide="loading">
     <md-card>
         <md-card-header layout="row" layout-xs="column" layout="space-between center">
             <md-card-avatar>
-                <img ng-src="{{user.avatar_url}}" class="md-user-avatar" />
+                <img ng-src="{{user.avatar_url}}" class="md-user-avatar"/>
             </md-card-avatar>
 
             <md-card-header-text flex="grow">

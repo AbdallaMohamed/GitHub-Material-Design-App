@@ -1,4 +1,4 @@
-angular.module('ngChurchDesk').controller('repositoriesModal', function ($scope, $mdDialog, user, User) {
+angular.module('ngGitHub').controller('repositoriesModal', function ($scope, $mdDialog, user, User) {
     // a loading indicator flag
     $scope.loading = true;
     

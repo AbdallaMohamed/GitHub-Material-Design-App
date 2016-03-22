@@ -1,4 +1,4 @@
-angular.module('ngChurchDesk').config(function ($stateProvider) {
+angular.module('ngGitHub').config(function ($stateProvider) {
     $stateProvider
         .state('user', {
             url: '/User/:username',

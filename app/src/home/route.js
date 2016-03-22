@@ -1,8 +1,8 @@
-angular.module('ngChurchDesk').config(function ($stateProvider) {
+angular.module('ngGitHub').config(function ($stateProvider) {
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: 'src/home/views/home.partial.html',
+            templateUrl: 'src/home/home.partial.html',
             controller: 'homeCtrl',
             title: 'Home Page'
         });

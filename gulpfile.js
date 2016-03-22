@@ -12,8 +12,8 @@ var gulp = require('gulp'),
     gulpFilter = require('gulp-filter'),
     wiredep = require('wiredep').stream,
     sourcemaps = require('gulp-sourcemaps'),
-    browserSync = require('browser-sync').create();
-
+    browserSync = require('browser-sync').create(),
+    livereload = require('gulp-livereload');
 
 
 // ----------------------------------------------------------------- //
@@ -27,8 +27,9 @@ gulp.task('app:JS', function () {
         .pipe(ngAnnotate())
         .pipe(angularFilesort())
         .pipe(concat('main.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('app/cache'));
+        //.pipe(uglify())
+        .pipe(gulp.dest('app/cache'))
+        .pipe(livereload());
 });
 
 
@@ -37,17 +38,18 @@ gulp.task('app:CSS', function () {
         .pipe(sass())
         .pipe(minifyCss())
         .pipe(concat('main.css'))
-        .pipe(gulp.dest('app/cache'));
+        .pipe(gulp.dest('app/cache'))
+        .pipe(livereload());
 });
-
 
 
 gulp.task('app:HTML', function () {
     return gulp.src('app/src/**/*.html')
         .pipe(minifyHTML())
-        .pipe(templateCache('partials.js', { module: 'ngChurchDesk', standalone: false }))
+        .pipe(templateCache('partials.js', {module: 'ngGitHub', standalone: false}))
         .pipe(uglify())
-        .pipe(gulp.dest('app/cache'));
+        .pipe(gulp.dest('app/cache'))
+        .pipe(livereload());
 });
 
 // ----------------------------------------------------------------- //
@@ -58,7 +60,7 @@ gulp.task('3rdParty:JS', function () {
     return gulp.src(mainBowerFiles())
         .pipe(gulpFilter('**/*.js'))
         .pipe(wiredep())
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(concat('3rdParty.js'))
         .pipe(gulp.dest('app/cache'));
 
@@ -74,9 +76,9 @@ gulp.task('3rdParty:CSS', function () {
 });
 
 
-
 // for development purposes
 gulp.task('watch', function () {
+    livereload.listen();
     watch('app/src/**/*.js', run('app:JS'));
     watch('app/**/*.html', run('app:HTML'));
     watch(['app/src/**/*.scss', 'app/src/**/*.css'], run('app:CSS'));
@@ -104,17 +106,17 @@ gulp.task('deployApp', [
     // final packaging
     // concatenate all JS files into 1 JS file and all CSS files into 1 CSS file
     gulp.src([
-            'app/cache/3rdParty.js',
-            'app/cache/main.js',
-            'app/cache/partials.js',
-        ])
+        'app/cache/3rdParty.js',
+        'app/cache/main.js',
+        'app/cache/partials.js',
+    ])
         .pipe(concat('dist.js'))
         .pipe(gulp.dest('app/release/'));
 
     gulp.src([
-            'app/cache/main.css',
-            'app/cache/3rdParty.css'
-        ])
+        'app/cache/main.css',
+        'app/cache/3rdParty.css'
+    ])
         .pipe(concat('dist.css'))
         .pipe(gulp.dest('app/release/'));
 });

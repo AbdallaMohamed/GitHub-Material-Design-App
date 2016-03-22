@@ -1,4 +1,4 @@
-angular.module('ngChurchDesk').factory('User', function ($resource, ApiUrl) {
+angular.module('ngGitHub').factory('User', function ($resource, ApiUrl) {
     return $resource(ApiUrl + '/users/:username' , {}, {
         // custom action for searching
         search: {

@@ -1,4 +1,4 @@
-angular.module('ngChurchDesk', [
+angular.module('ngGitHub', [
     'ui.router',
     'ngAnimate',
     'ngResource',
@@ -6,30 +6,54 @@ angular.module('ngChurchDesk', [
     'angular-loading-bar',
     'ngMdIcons'
 ]);
+setTimeout(
+    function asyncBootstrap() {
+        angular.bootstrap( document, [ "ngGitHub" ] );
+    },
+    ( 1 * 1000 )
+);
+// The API Url
+angular.module('ngGitHub').constant('ApiUrl', 'https://api.github.com');
 
-angular.module('ngChurchDesk').config(function ($urlRouterProvider, $mdThemingProvider, cfpLoadingBarProvider) {
-    
+// App configuration
+angular.module('ngGitHub').config(function ($urlRouterProvider, $mdThemingProvider, cfpLoadingBarProvider) {
+
     // setting the default route to '#/'
     $urlRouterProvider.otherwise("/");
-    
-    // defining the default material design theme
+
+    var customPrimaryColor = $mdThemingProvider.extendPalette('indigo', {
+        '500': '276C7B'
+    }), customAccentColor = $mdThemingProvider.extendPalette('yellow', {
+        '500': 'D7D004'
+    });
+    // Register the new color palette map with the name <code>neonRed</code>
+    $mdThemingProvider.definePalette('customPrimaryColor', customPrimaryColor);
+    $mdThemingProvider.definePalette('customAccentColor', customAccentColor);
+    // Use that theme for the primary intentions
     $mdThemingProvider.theme('default')
-        .primaryPalette('indigo')
-        .accentPalette('orange')
-        .warnPalette('red');
-    
+        .primaryPalette('customPrimaryColor')
+        .accentPalette('customAccentColor');
+
+
     // turning off the spinner of the loading bar
     cfpLoadingBarProvider.includeSpinner = false;
-    
+
 });
 
-angular.module('ngChurchDesk').controller('appController', function ($scope, $mdSidenav, $state) {
-    
+angular.module('ngGitHub').run(function ($rootScope) {
+    $rootScope.appLoaded = true;
+})
+
+// App Main Controller
+angular.module('ngGitHub').controller('appController', function ($scope, $mdSidenav, $state, $mdMedia) {
+
+    $scope.$mdMedia = $mdMedia;
+
     // Render the app's toolbar title from the current state
     $scope.getToolbarTitle = function () {
         return $state.current.title;
     };
-    
+
     // event handler for opening the side nav
     $scope.openSideNav = function () {
         $mdSidenav('left').open();
@@ -40,6 +64,3 @@ angular.module('ngChurchDesk').controller('appController', function ($scope, $md
         $mdSidenav('left').close();
     };
 });
-
-// The API Url
-angular.module('ngChurchDesk').constant('ApiUrl', 'https://api.github.com')

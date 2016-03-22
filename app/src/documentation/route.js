@@ -1,8 +1,8 @@
-angular.module('ngChurchDesk').config(function ($stateProvider) {
+angular.module('ngGitHub').config(function ($stateProvider) {
     $stateProvider
         .state('documentation', {
             url: '/Documentation',
-            templateUrl: 'src/documentation/views/documentation.partial.html',
+            templateUrl: 'src/documentation/documentation.partial.html',
             controller: 'documentationCtrl',
             title: 'Documentation'
         });
