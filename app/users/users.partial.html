@@ -1,0 +1,21 @@
+<md-content layout="row" layout-padding>
+    <md-input-container flex>
+        <label>Filter</label>
+        <input ng-model="searchQuery" flex ng-model-options="{debounce: 350}" ng-change="search(searchQuery)">
+    </md-input-container>
+</md-content>
+<md-content layout="row" flex layout-wrap layout-align="space-around center">
+    <md-card ng-repeat="user in users" flex="45" flex-gt-sm="30" flex-xs="100">
+        <div class="md-card-image"
+             blurry-image-load
+             large-image="user.avatar_url"
+             small-image="user.avatar_url + '&s=20'">
+        </div>
+        <md-card-content>
+            <span class="md-headline">{{user.login}}</span>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button ui-sref="user({username: user.login})">Profile</md-button>
+        </md-card-actions>
+    </md-card>
+</md-content>
