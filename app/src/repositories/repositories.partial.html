@@ -1,11 +1,11 @@
-<md-content flex layout="row" layout-padding>
+<md-content layout="row" layout-padding>
     <md-input-container flex>
         <label>Filter</label>
         <input ng-model="searchQuery" flex ng-model-options="{debounce: 350}" ng-change="search(searchQuery)">
     </md-input-container>
 </md-content>
 
-<md-content flex class="md-padding" layout="column" layout-align="start stretch">
+<md-content class="md-padding" layout="column" layout-align="start stretch">
     <md-list>
         <md-subheader class="md-sticky" ng-if="repositoriesCount">{{repositoriesCount ? repositoriesCount +
             'repositories' : null}}

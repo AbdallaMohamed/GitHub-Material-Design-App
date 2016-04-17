@@ -1,0 +1,27 @@
+.placeholder {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    //height: 50%;
+}
+
+.placeholder img {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.35s ease-out;
+}
+
+.placeholder img.loaded {
+    opacity: 1;
+}
+
+.img-small {
+    filter: blur(50px);
+}

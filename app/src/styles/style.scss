@@ -30,7 +30,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255,1);
+  background: rgba(255, 255, 255, 1);
   z-index: 4;
 }
 
@@ -39,6 +39,10 @@
   margin-right: 10px;
   bottom: 2px;
   position: relative;
+}
+
+#main-content {
+  height: 100%
 }
 
 // Angular Fade Animation
@@ -79,56 +83,6 @@
   }
 }
 
-// Fading in and out of the UI-View
-ui-view.ng-enter,
-ui-view.ng-leave {
-  //position: absolute;
-  //left: 0;
-  //right: 0;
-  -webkit-transition: all 0.35s ease-out;
-  -moz-transition: all 0.35s ease-out;
-  -o-transition: all 0.35s ease-out;
-  transition: all 0.35s ease-out;
-}
-
-ui-view.ng-enter {
-  opacity: 0;
-  //-webkit-transform: translate3d(0, 100px, 0);
-  //-moz-transform: translate3d(0, 100px, 0);
-  //transform: translate3d(0, 100px, 0);
-}
-
-ui-view.ng-enter-active {
-  opacity: 1;
-  //-webkit-transform: translate3d(0, 0, 0);
-  //-moz-transform: translate3d(0, 0, 0);
-  //transform: translate3d(0, 0, 0);
-}
-
-ui-view.ng-enter-stagger,
-ui-view.ng-leave-stagger {
-  /* this will have a 100ms delay between each successive leave animation */
-  //transition-delay: 1s;
-
-  /* As of 1.4.4, this must always be set: it signals ngAnimate
-    to not accidentally inherit a delay property from another CSS class */
-  //transition-duration: 1s;
-}
-
-ui-view.ng-leave {
-  opacity: 1;
-  //-webkit-transform: translate3d(0, 0, 0);
-  //-moz-transform: translate3d(0, 0, 0);
-  //transform: translate3d(0, 0, 0);
-}
-
-ui-view.ng-leave-active {
-  opacity: 0;
-  //-webkit-transform: translate3d(0, 100px, 0);
-  //-moz-transform: translate3d(0, 100px, 0);
-  //transform: translate3d(0, 100px, 0);
-}
-
 // Splash Screen
 .splash-screen {
   background-color: #ffffff;
@@ -141,136 +95,6 @@ ui-view.ng-leave-active {
   opacity: 1;
 }
 
-.splash-screen.ng-hide-add,
-.splash-screen.ng-hide-remove {
-  transition: all ease-out 1s;
-
-}
-
-.splash-screen.ng-hide {
-  opacity: 0;
-}
-
-// CSS Loader
-.showbox {
-  background-color: #fdfbff;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 5%;
-}
-
-.loader {
-  position: relative;
-  margin: 0px auto;
-  width: 100px;
-}
-
-.loader:before {
-  content: '';
-  display: block;
-  padding-top: 100%;
-}
-
-.circular {
-  -webkit-animation: rotate 2s linear infinite;
-  animation: rotate 2s linear infinite;
-  height: 100%;
-  -webkit-transform-origin: center center;
-  transform-origin: center center;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.path {
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
-  -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
-  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
-  stroke-linecap: round;
-}
-
-@-webkit-keyframes rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes dash {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35px;
-  }
-  100% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -124px;
-  }
-}
-
-@keyframes dash {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35px;
-  }
-  100% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -124px;
-  }
-}
-
-@-webkit-keyframes color {
-  100%, 0% {
-    stroke: #d62d20;
-  }
-  40% {
-    stroke: #0057e7;
-  }
-  66% {
-    stroke: #008744;
-  }
-  80%, 90% {
-    stroke: #ffa700;
-  }
-}
-
-@keyframes color {
-  100%, 0% {
-    stroke: #d62d20;
-  }
-  40% {
-    stroke: #0057e7;
-  }
-  66% {
-    stroke: #008744;
-  }
-  80%, 90% {
-    stroke: #ffa700;
-  }
-}
-
 .users-view-user {
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -280,48 +104,17 @@ ui-view.ng-leave-active {
 }
 
 .users-view-user.ng-enter {
-  -webkit-transform: translate3d(0, 100px, 0);
-  -moz-transform: translate3d(0, 100px, 0);
-  -ms-transform: translate3d(0, 100px, 0);
-  -o-transform: translate3d(0, 100px, 0);
-  transform: translate3d(0, 100px, 0);
   opacity: 0;
 }
 
 .users-view-user.ng-enter-active {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
   opacity: 1;
 }
 
-.users-view-user.ng-enter-stagger {
-  transition-delay: 0.05s;
-  transition-duration: 0s;
-}
-
 .users-view-user.ng-leave {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
   opacity: 1;
 }
 
 .users-view-user.ng-leave-active {
-  -webkit-transform: translate3d(0, 200px, 0);
-  -moz-transform: translate3d(0, 200px, 0);
-  -ms-transform: translate3d(0, 200px, 0);
-  -o-transform: translate3d(0, 200px, 0);
-  transform: translate3d(0, 200px, 0);
   opacity: 0;
 }
-
-.users-view-user.ng-leave-stagger {
-  transition-delay: 0.05s;
-  transition-duration: 0s;
-}
-

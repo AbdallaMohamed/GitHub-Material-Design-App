@@ -6,12 +6,7 @@ angular.module('ngGitHub', [
     'angular-loading-bar',
     'ngMdIcons'
 ]);
-setTimeout(
-    function asyncBootstrap() {
-        angular.bootstrap( document, [ "ngGitHub" ] );
-    },
-    ( 1 * 1000 )
-);
+
 // The API Url
 angular.module('ngGitHub').constant('ApiUrl', 'https://api.github.com');
 
@@ -42,7 +37,7 @@ angular.module('ngGitHub').config(function ($urlRouterProvider, $mdThemingProvid
 
 angular.module('ngGitHub').run(function ($rootScope) {
     $rootScope.appLoaded = true;
-})
+});
 
 // App Main Controller
 angular.module('ngGitHub').controller('appController', function ($scope, $mdSidenav, $state, $mdMedia) {
