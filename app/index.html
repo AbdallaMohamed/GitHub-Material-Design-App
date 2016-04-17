@@ -46,7 +46,6 @@
             class="md-whiteframe-z2"
             ng-class="{'desktop-app-container': $mdMedia('gt-md') == true}">
 
-        <!--Start: Side Navigation-->
         <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')"
                     md-component-id="left"
                     layout="column">
@@ -55,8 +54,9 @@
         <!--End: Side Navigation-->
 
         <!--START: Content-->
-        <md-content layout="column" flex id="main-content">
-            <ng-include src="'src/toolbar/toolbar.tmpl.html'" ng-controller="toolbarController"></ng-include>
+        <md-content layout="column" flex hide-header-parent>
+            <ng-include src="'src/toolbar/toolbar.tmpl.html'" ng-controller="toolbarController"
+                        hide-header hide-header-on="true"></ng-include>
             <ui-view flex>
             </ui-view>
         </md-content>
