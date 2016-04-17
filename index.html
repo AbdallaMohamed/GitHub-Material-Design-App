@@ -1,0 +1,77 @@
+<html ng-app="ngGitHub">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GitHub App</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="release/dist.css">
+    <!--<link rel="stylesheet" href="cache/3rdParty.css">-->
+    <!--<link rel="stylesheet" href="cache/main.css">-->
+</head>
+
+<body layout="column" layout ng-controller="appController">
+
+
+<!--App-Loading Screen-->
+<div class="splash-screen fade" ng-if="!$root.appLoaded" >
+    <!--css loader-->
+    <div class="showbox">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+<!--background div-->
+<div id="background-div" layout="column">
+
+    <md-toolbar ng-show="$mdMedia('gt-md')" flex="20" class="card-background">
+    </md-toolbar>
+    <div flex="80">
+    </div>
+</div>
+
+<!--foreground div-->
+<div id="foreground-div" layout="row" layout-align="center end">
+    <!--main content of the app-->
+    <md-content
+            flex-gt-md="80"
+            flex="100"
+            layout="row"
+            layout-align="start stretch"
+            class="md-whiteframe-z2"
+            ng-class="{'desktop-app-container': $mdMedia('gt-md') == true}">
+
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')"
+                    md-component-id="left"
+                    layout="column">
+            <div ng-include="'src/sideNav/sideNav.partial.html'" ng-controller="sideNavController"></div>
+        </md-sidenav>
+        <!--End: Side Navigation-->
+
+        <!--START: Content-->
+        <md-content layout="column" flex hide-header-parent>
+            <ng-include src="'src/toolbar/toolbar.tmpl.html'" ng-controller="toolbarController"
+                        hide-header hide-header-on="true"></ng-include>
+            <ui-view flex>
+            </ui-view>
+        </md-content>
+
+
+    </md-content>
+</div>
+
+
+<script src="release/dist.js"></script>
+<!--<script src="cache/3rdParty.js"></script>-->
+<!--<script src="cache/main.js"></script>-->
+<!--<script src="cache/partials.js"></script>-->
+
+
+</body>
+
+</html>
