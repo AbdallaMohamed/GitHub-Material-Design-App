@@ -50,7 +50,7 @@ gulp.task('app:CSS', function () {
 
 
 gulp.task('app:HTML', function () {
-    return gulp.src('app/**/*.html')
+    return gulp.src(['app/**/*.html','!app/index.html'])
         // .pipe(minifyHTML())
         .pipe(templateCache('partials.js', {module: 'ngGitHub', standalone: false}))
         //.pipe(uglify())

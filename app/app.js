@@ -37,7 +37,7 @@ angular.module('ngGitHub').config(function ($urlRouterProvider, $mdThemingProvid
 
 angular.module('ngGitHub').run(function ($rootScope) {
     $rootScope.appLoaded = true;
-})
+});
 
 // App Main Controller
 angular.module('ngGitHub').controller('appController', function ($scope, $mdSidenav, $state, $mdMedia) {
