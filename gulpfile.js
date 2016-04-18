@@ -29,7 +29,7 @@ gulp.task('app:JS', function () {
         .pipe(ngAnnotate())
         .pipe(angularFilesort())
         .pipe(concat('main.js'))
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('app/cache'))
         .pipe(livereload());
 });
@@ -42,7 +42,7 @@ gulp.task('app:CSS', function () {
         '!app/cache/*.css'
     ])
         .pipe(sass())
-        //.pipe(yCss())
+        .pipe(minifyCss())
         .pipe(concat('main.css'))
         .pipe(gulp.dest('app/cache'))
         .pipe(livereload());
@@ -50,10 +50,10 @@ gulp.task('app:CSS', function () {
 
 
 gulp.task('app:HTML', function () {
-    return gulp.src(['app/**/*.html','!app/index.html'])
-        // .pipe(minifyHTML())
+    return gulp.src(['app/**/*.html', '!app/index.html'])
+        .pipe(minifyHTML())
         .pipe(templateCache('partials.js', {module: 'ngGitHub', standalone: false}))
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('app/cache'))
         .pipe(livereload());
 });
@@ -66,7 +66,7 @@ gulp.task('3rdParty:JS', function () {
     return gulp.src(mainBowerFiles())
         .pipe(gulpFilter('**/*.js'))
         .pipe(wiredep())
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(concat('3rdParty.js'))
         .pipe(gulp.dest('app/cache'));
 
@@ -85,7 +85,7 @@ gulp.task('3rdParty:CSS', function () {
 // for development purposes
 gulp.task('watch', function () {
     livereload.listen();
-    watch(['app/**/*.js','!app/cache/*.js','!app/dist/*.js'], run('app:JS'));
+    watch(['app/**/*.js', '!app/cache/*.js', '!app/dist/*.js'], run('app:JS'));
     watch(['app/**/*.html'], run('app:HTML'));
     watch(['app/**/*.scss'], run('app:CSS'));
     watch(['bower.json'], run('3rdParty:JS'));

@@ -23,5 +23,6 @@
 }
 
 .img-small {
-    filter: blur(50px);
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
 }
