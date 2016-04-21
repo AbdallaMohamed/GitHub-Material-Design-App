@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GitHub App</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="release/dist.css">
+    <link rel="stylesheet" href="dist/dist.css">
     <!--<link rel="stylesheet" href="cache/3rdParty.css">-->
     <!--<link rel="stylesheet" href="cache/main.css">-->
 </head>
@@ -36,7 +36,7 @@
 </div>
 
 <!--foreground div-->
-<div id="foreground-div" layout="row" layout-align="center end">
+<div id="foreground-div" layout="row" layout-align="center stretch" layout-align-gt-md="center end">
     <!--main content of the app-->
     <md-content
             flex-gt-md="80"
@@ -49,13 +49,13 @@
         <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')"
                     md-component-id="left"
                     layout="column">
-            <div ng-include="'src/sideNav/sideNav.partial.html'" ng-controller="sideNavController"></div>
+            <div ng-include="'sideNav/sideNav.partial.html'" ng-controller="sideNavController"></div>
         </md-sidenav>
         <!--End: Side Navigation-->
 
         <!--START: Content-->
         <md-content layout="column" flex hide-header-parent>
-            <ng-include src="'src/toolbar/toolbar.tmpl.html'" ng-controller="toolbarController"
+            <ng-include src="'toolbar/toolbar.tmpl.html'" ng-controller="toolbarController"
                         hide-header hide-header-on="true"></ng-include>
             <ui-view flex>
             </ui-view>
@@ -66,7 +66,7 @@
 </div>
 
 
-<script src="release/dist.js"></script>
+<script src="dist/dist.js"></script>
 <!--<script src="cache/3rdParty.js"></script>-->
 <!--<script src="cache/main.js"></script>-->
 <!--<script src="cache/partials.js"></script>-->
