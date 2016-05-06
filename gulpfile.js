@@ -12,7 +12,6 @@ var gulp = require('gulp'),
     gulpFilter = require('gulp-filter'),
     wiredep = require('wiredep').stream,
     sourcemaps = require('gulp-sourcemaps'),
-    browserSync = require('browser-sync').create(),
     livereload = require('gulp-livereload');
 
 
@@ -102,7 +101,7 @@ function run(taskName) {
 
 // for deployment
 
-gulp.task('deployApp', [
+gulp.task('deploy', [
     'app:JS',
     'app:HTML',
     'app:CSS',
