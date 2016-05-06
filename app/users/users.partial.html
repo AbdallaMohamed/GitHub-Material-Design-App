@@ -4,18 +4,25 @@
         <input ng-model="searchQuery" flex ng-model-options="{debounce: 350}" ng-change="search(searchQuery)">
     </md-input-container>
 </md-content>
-<md-content layout="row" flex layout-wrap layout-align="space-around center">
-    <md-card ng-repeat="user in users" flex="45" flex-gt-sm="30" flex-xs="100">
-        <div class="md-card-image"
-             blurry-image-load
-             large-image="user.avatar_url"
-             small-image="user.avatar_url + '&s=20'">
-        </div>
-        <md-card-content>
-            <span class="md-headline">{{user.login}}</span>
-        </md-card-content>
-        <md-card-actions layout="row" layout-align="end center">
-            <md-button ui-sref="user({username: user.login})">Profile</md-button>
-        </md-card-actions>
-    </md-card>
+<md-content layout-padding>
+    <md-grid-list
+            md-cols-xs="2" md-cols-sm="3" md-cols-md="4" md-cols-lg="5"
+            md-row-height-gt-md="1:1" md-row-height="2:2"
+            md-gutter="12px" md-gutter-gt-sm="8px" >
+        <md-grid-tile ng-repeat="user in users"
+                      md-rowspan="1"
+                      md-colspan="1"
+                      md-colspan-sm="1"
+                      md-colspan-xs="1"
+                      class="clickable"
+                      md-whiteframe="2"
+                      ui-sref="user({username: user.login})">
+            <div blurry-image-load
+                 flex
+                 large-image="user.avatar_url"
+                 small-image="user.avatar_url + '&s=20'">
+            </div>
+            <md-grid-tile-footer><h3>{{user.login}}</h3></md-grid-tile-footer>
+        </md-grid-tile>
+    </md-grid-list>
 </md-content>

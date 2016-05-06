@@ -4,7 +4,7 @@ angular.module('ngGitHub').directive('backgroundSrc', function () {
         link: function (scope, element, attrs) {
 
             var imgLink = attrs.backgroundSrc;
-            $(element).css({
+            angular.element(element).css({
                 backgroundImage: 'url(' + imgLink + ')',
                 backgroundSize: 'contain'
             });

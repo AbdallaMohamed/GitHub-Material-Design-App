@@ -11,7 +11,9 @@ angular.module('ngGitHub', [
 angular.module('ngGitHub').constant('ApiUrl', 'https://api.github.com');
 
 // App configuration
-angular.module('ngGitHub').config(function ($urlRouterProvider, $mdThemingProvider, cfpLoadingBarProvider) {
+angular.module('ngGitHub').config(function ($urlRouterProvider, $mdThemingProvider, cfpLoadingBarProvider, $compileProvider) {
+
+    $compileProvider.debugInfoEnabled(false);
 
     // setting the default route to '#/'
     $urlRouterProvider.otherwise("/");

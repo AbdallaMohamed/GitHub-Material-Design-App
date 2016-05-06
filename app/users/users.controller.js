@@ -1,9 +1,8 @@
 angular.module('ngGitHub').controller('usersCtrl', function ($scope, User) {
     // loading indicator flag
     $scope.loading = true;
-    
-    
-    
+
+
     // a self invoking function that handles the 2 cases:
     //       1. Getting all users, if there's no query of course.
     //       2. Searching for a user through the search action, if a query exists.
@@ -15,12 +14,13 @@ angular.module('ngGitHub').controller('usersCtrl', function ($scope, User) {
             $scope.usersCount = null;
         }
         else {
-            User.search({ q: query }, function (data) {
+            User.search({q: query}, function (data) {
                 $scope.users = data.items;
                 $scope.usersCount = data.total_count;
                 $scope.loading = false;
             });
         }
     })();
+
 
 });

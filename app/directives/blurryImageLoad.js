@@ -5,9 +5,8 @@ angular.module('ngGitHub').directive('blurryImageLoad', function ($timeout) {
             smallImage: '=',
             largeImage: '='
         },
-        template:
-        '<div class="placeholder">' +
-        '<img ng-src="{{smallImage}}" class="img-small">' +
+        template: '<div class="placeholder">' +
+        '<img ng-src-with-placeholder="{{smallImage}}" class="img-small">' +
         '<div style="padding-bottom: 100%;">' +
         '</div>',
         link: function (scope, element, attrs) {
@@ -16,7 +15,7 @@ angular.module('ngGitHub').directive('blurryImageLoad', function ($timeout) {
                 small = placeholder.children('.img-small');
 
             scope.$watch('[smallImage,largeImage]', function () {
-                if(scope.smallImage && scope.largeImage) {
+                if (scope.smallImage && scope.largeImage) {
 
                     small.removeClass('loaded');
                     element.find('.large-image').remove();
@@ -36,9 +35,9 @@ angular.module('ngGitHub').directive('blurryImageLoad', function ($timeout) {
                         angular.element(imgLarge).addClass('large-image');
                     };
                     placeholder.append(imgLarge);
+
                 }
             });
-
 
 
         }
