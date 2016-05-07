@@ -1,28 +1,56 @@
-<md-content layout="row" layout-padding>
-    <md-input-container flex>
-        <label>Filter</label>
-        <input ng-model="searchQuery" flex ng-model-options="{debounce: 350}" ng-change="search(searchQuery)">
-    </md-input-container>
-</md-content>
-<md-content layout-padding>
-    <md-grid-list
-            md-cols-xs="2" md-cols-sm="3" md-cols-md="4" md-cols-lg="5"
-            md-row-height-gt-md="1:1" md-row-height="2:2"
-            md-gutter="12px" md-gutter-gt-sm="8px" >
-        <md-grid-tile ng-repeat="user in users"
-                      md-rowspan="1"
-                      md-colspan="1"
-                      md-colspan-sm="1"
-                      md-colspan-xs="1"
-                      class="clickable"
-                      md-whiteframe="2"
-                      ui-sref="user({username: user.login})">
-            <div blurry-image-load
-                 flex
-                 large-image="user.avatar_url"
-                 small-image="user.avatar_url + '&s=20'">
-            </div>
-            <md-grid-tile-footer><h3>{{user.login}}</h3></md-grid-tile-footer>
-        </md-grid-tile>
-    </md-grid-list>
-</md-content>
+<div layout="column" layout-align="start stretch">
+
+    <div layout="column" layout-padding>
+        <md-input-container style="max-height: 0px">
+            <label>Search for a user by name...</label>
+            <input ng-model="search.query" flex ng-model-options="{debounce: 350}" ng-change="searchUsers()">
+        </md-input-container>
+    </div>
+
+    <div layout-padding layout="row" layout-align="space-between center" layout-xs="column"
+         layout-align-xs="start stretch" class="search-filters">
+        <span class="md-subhead" style="margin-right: 10px;" hide-xs>Filter</span>
+        <md-input-container flex style="margin-bottom: 20px;">
+            <md-select ng-model="search.selectedFilters" multiple md-selected-text="getFilterText()"
+                       ng-change="searchUsers()">
+                <md-optgroup label="Search Filters">
+                    <md-option ng-value="searchFilter" ng-repeat="searchFilter in searchOptions.filters">
+                        {{searchFilter}}
+                    </md-option>
+                </md-optgroup>
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+            <md-switch ng-model="search.order" aria-label="Order By" ng-true-value="'asc'" ng-false-value="'desc'"
+                       class="md-primary" ng-change="searchUsers()">
+                {{ search.order == 'asc' ? 'Ascending' : 'Descending' }}
+            </md-switch>
+        </md-input-container>
+    </div>
+
+    <div ng-if="loading" layout="row" layout-sm="column" layout-align="space-around">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+    <md-content layout-padding>
+        <md-grid-list
+                md-cols-xs="2" md-cols-sm="3" md-cols-md="4" md-cols-lg="5"
+                md-row-height-gt-md="1:1" md-row-height="2:2"
+                md-gutter="12px" md-gutter-gt-sm="8px">
+            <md-grid-tile ng-repeat="user in users"
+                          md-rowspan="1"
+                          md-colspan="1"
+                          md-colspan-sm="1"
+                          md-colspan-xs="1"
+                          class="clickable user-tile"
+                          md-whiteframe="2"
+                          ui-sref="user({username: user.login})">
+                <div blurry-image-load
+                     flex
+                     large-image="user.avatar_url"
+                     small-image="user.avatar_url + '&s=20'">
+                </div>
+                <md-grid-tile-footer><h3>{{user.login}}</h3></md-grid-tile-footer>
+            </md-grid-tile>
+        </md-grid-list>
+    </md-content>
+</div>

@@ -1,0 +1,21 @@
+// Splash Screen
+.splash-screen {
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 10;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    opacity: 1;
+}
+
+.splash-screen.ng-hide-add,
+.splash-screen.ng-hide-remove {
+    transition: all ease-out 1s;
+
+}
+
+.splash-screen.ng-hide {
+    opacity: 0;
+}

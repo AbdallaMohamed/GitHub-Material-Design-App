@@ -24,16 +24,17 @@ angular.module('ngGitHub').directive('blurryImageLoad', function ($timeout) {
                     var img = new Image();
                     img.src = scope.smallImage;
                     img.onload = function () {
-                        small.addClass('loaded');
+                        // small.addClass('loaded');
                     };
 
                     // 2: load large image
                     var imgLarge = new Image();
+                    angular.element(imgLarge).addClass('img-large');
                     imgLarge.src = scope.largeImage;
                     imgLarge.onload = function () {
                         angular.element(imgLarge).addClass('loaded');
-                        angular.element(imgLarge).addClass('large-image');
                     };
+
                     placeholder.append(imgLarge);
 
                 }

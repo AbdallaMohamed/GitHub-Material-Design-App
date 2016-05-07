@@ -1,0 +1,64 @@
+.user-tile {
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.user-tile.ng-enter {
+  -webkit-transform: translate3d(0, 100px, 0);
+  -moz-transform: translate3d(0, 100px, 0);
+  -ms-transform: translate3d(0, 100px, 0);
+  -o-transform: translate3d(0, 100px, 0);
+  transform: translate3d(0, 100px, 0);
+  opacity: 0;
+}
+
+.user-tile.ng-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.user-tile.ng-enter-stagger {
+  transition-delay: 0.05s;
+  transition-duration: 0s;
+}
+
+.user-tile.ng-leave {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.user-tile.ng-leave-active {
+  -webkit-transform: translate3d(0, 200px, 0);
+  -moz-transform: translate3d(0, 200px, 0);
+  -ms-transform: translate3d(0, 200px, 0);
+  -o-transform: translate3d(0, 200px, 0);
+  transform: translate3d(0, 200px, 0);
+  opacity: 0;
+}
+
+.user-tile.ng-leave-stagger {
+  transition-delay: 0.05s;
+  transition-duration: 0s;
+}
+
+.search-filters {
+  md-input-container, md-switch {
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  .md-errors-spacer {
+    display: none;
+  }
+}
