@@ -24,6 +24,7 @@
     "angular-loading-bar": "~0.8.0",
     "angular-material-icons": "~0.6.0",
     "svg-morpheus": "~0.1.8",
-    "animate.css": "animate-css#^3.5.1"
+    "animate.css": "animate-css#^3.5.1",
+    "angular-fullscreen": "^1.0.1"
   }
 }

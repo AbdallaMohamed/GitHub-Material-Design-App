@@ -4,11 +4,17 @@ angular.module('ngGitHub', [
     'ngResource',
     'ngMaterial',
     'angular-loading-bar',
-    'ngMdIcons'
+    'ngMdIcons',
+    'FBAngular',
 ]);
 
 // The API Url
 angular.module('ngGitHub').constant('ApiUrl', 'https://api.github.com');
+angular.module('ngGitHub').constant('authorizeUrl', 'https://github.com/login/oauth/authorize');
+angular.module('ngGitHub').constant('client_id', 'a64d88644009ca346cb9');
+angular.module('ngGitHub').constant('client_secret', 'f3c8eb95fb87d272c64daedd6fffb45cdcabdc61');
+// angular.module('ngGitHub').constant('redirect_uri', 'http://abdallamohamed.github.io/GitHub-Material-Design-App/#/Auth');
+angular.module('ngGitHub').constant('redirect_uri', 'http://localhost:8181');
 
 // App configuration
 angular.module('ngGitHub').config(function ($urlRouterProvider, $mdThemingProvider, cfpLoadingBarProvider, $compileProvider) {
@@ -39,6 +45,22 @@ angular.module('ngGitHub').config(function ($urlRouterProvider, $mdThemingProvid
 
 angular.module('ngGitHub').run(function ($rootScope) {
     $rootScope.appLoaded = true;
+
+    $rootScope.$on('oauth:error', function (event, rejection) {
+        // Ignore `invalid_grant` error - should be catched on `LoginController`.
+        if ('invalid_grant' === rejection.data.error) {
+            return;
+        }
+
+        // Refresh token when a `invalid_token` error occurs.
+        if ('invalid_token' === rejection.data.error) {
+            return OAuth.getRefreshToken();
+        }
+
+        // Redirect to `/login` with the `error_reason`.
+        return $window.location.href = '/login?error_reason=' + rejection.data.error;
+    });
+
 });
 
 // App Main Controller

@@ -4,13 +4,18 @@
         ng-class="{
             'card-background': $mdMedia('gt-md') == false
         }">
-    <div class="md-toolbar-tools">
+    <div class="md-toolbar-tools" layout="row">
         <md-button class="md-icon-button" aria-label="SideNav" ng-click="openSideNav()" ng-hide="$mdMedia('gt-sm')">
             <i class="material-icons">menu</i>
         </md-button>
-        <h2>
+        <h2 flex>
             <span ng-bind="$parent.getToolbarTitle()"></span>
         </h2>
-        <span flex></span>
+        <md-button class="md-icon-button" ng-click="goFullscreen()">
+            <i class="material-icons">zoom_out_map</i>
+            <md-tooltip md-direction="bottom">
+                Go Full Screen
+            </md-tooltip>
+        </md-button>
     </div>
 </md-toolbar>

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": false,
   "scripts": {
-    "start": "node_modules/.bin/http-server -p 8181 app/ && open http://localhost:8181"
+    "start": "node_modules/.bin/http-server -o -p 8181 app/ "
   },
   "dependencies": {
     "bower": "^1.7.7",

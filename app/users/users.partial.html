@@ -4,6 +4,7 @@
         <md-input-container style="max-height: 0px">
             <label>Search for a user by name...</label>
             <input ng-model="search.query" flex ng-model-options="{debounce: 350}" ng-change="searchUsers()">
+            <md-progress-circular md-mode="indeterminate" ng-if="loading"></md-progress-circular>
         </md-input-container>
     </div>
 
@@ -11,7 +12,8 @@
          layout-align-xs="start stretch" class="search-filters">
         <span class="md-subhead" style="margin-right: 10px;" hide-xs>Filter</span>
         <md-input-container flex style="margin-bottom: 20px;">
-            <md-select ng-model="search.selectedFilters" multiple md-selected-text="getFilterText()"
+            <!--<label>With the most ...</label>-->
+            <md-select ng-model="search.selectedFilter"
                        ng-change="searchUsers()">
                 <md-optgroup label="Search Filters">
                     <md-option ng-value="searchFilter" ng-repeat="searchFilter in searchOptions.filters">
@@ -28,9 +30,7 @@
         </md-input-container>
     </div>
 
-    <div ng-if="loading" layout="row" layout-sm="column" layout-align="space-around">
-        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-    </div>
+
     <md-content layout-padding>
         <md-grid-list
                 md-cols-xs="2" md-cols-sm="3" md-cols-md="4" md-cols-lg="5"

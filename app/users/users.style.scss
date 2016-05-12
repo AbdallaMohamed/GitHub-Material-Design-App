@@ -7,20 +7,20 @@
 }
 
 .user-tile.ng-enter {
-  -webkit-transform: translate3d(0, 100px, 0);
-  -moz-transform: translate3d(0, 100px, 0);
-  -ms-transform: translate3d(0, 100px, 0);
-  -o-transform: translate3d(0, 100px, 0);
-  transform: translate3d(0, 100px, 0);
+  //-webkit-transform: translate3d(0, 100px, 0);
+  //-moz-transform: translate3d(0, 100px, 0);
+  //-ms-transform: translate3d(0, 100px, 0);
+  //-o-transform: translate3d(0, 100px, 0);
+  //transform: translate3d(0, 100px, 0);
   opacity: 0;
 }
 
 .user-tile.ng-enter-active {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  //-webkit-transform: translate3d(0, 0, 0);
+  //-moz-transform: translate3d(0, 0, 0);
+  //-ms-transform: translate3d(0, 0, 0);
+  //-o-transform: translate3d(0, 0, 0);
+  //transform: translate3d(0, 0, 0);
   opacity: 1;
 }
 
@@ -30,20 +30,20 @@
 }
 
 .user-tile.ng-leave {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  //-webkit-transform: translate3d(0, 0, 0);
+  //-moz-transform: translate3d(0, 0, 0);
+  //-ms-transform: translate3d(0, 0, 0);
+  //-o-transform: translate3d(0, 0, 0);
+  //transform: translate3d(0, 0, 0);
   opacity: 1;
 }
 
 .user-tile.ng-leave-active {
-  -webkit-transform: translate3d(0, 200px, 0);
-  -moz-transform: translate3d(0, 200px, 0);
-  -ms-transform: translate3d(0, 200px, 0);
-  -o-transform: translate3d(0, 200px, 0);
-  transform: translate3d(0, 200px, 0);
+  //-webkit-transform: translate3d(0, 200px, 0);
+  //-moz-transform: translate3d(0, 200px, 0);
+  //-ms-transform: translate3d(0, 200px, 0);
+  //-o-transform: translate3d(0, 200px, 0);
+  //transform: translate3d(0, 200px, 0);
   opacity: 0;
 }
 
@@ -61,4 +61,41 @@
   .md-errors-spacer {
     display: none;
   }
+}
+
+.loading-spinner-div {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+
+md-input-container > md-progress-circular {
+  -webkit-transition: opacity 0.2s ease-out;
+  -moz-transition: opacity 0.2s ease-out;
+  -ms-transition: opacity 0.2s ease-out;
+  -o-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+}
+
+md-input-container > md-progress-circular {
+  right: 0;
+  position: absolute;
+  transform: scale(0.75);
+  bottom: -25px;
+}
+md-input-container > md-progress-circular.ng-enter {
+  opacity: 0;
+}
+
+md-input-container > md-progress-circular.ng-enter-active {
+  opacity: 1;
+}
+
+md-input-container > md-progress-circular.ng-leave-active {
+  opacity: 1;
+}
+
+md-input-container > md-progress-circular.ng-leave {
+  opacity: 0;
 }

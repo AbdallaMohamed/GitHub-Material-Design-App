@@ -9,17 +9,15 @@
     <div ng-repeat="repository in repositories | limitTo : 3" layout="column" layout-align="start stretch"
          layout-padding layout-margin md-whiteframe="2">
         <div layout="row" layout-align="space-between stretch">
-            <div layout="column" layout-align="start start">
+            <div flex-xs="50" flex-sm="60" flex-md="70" flex-lg="80" layout="column" layout-align="start start">
                 <span class="md-headline">{{ repository.name }}</span>
-                <span class="md-subhead" style="margin-top: 5px;">{{ repository.description }}</span>
+                <span class="md-subhead" style="margin-top: 5px;">{{ repository.description | limitTo : 150 }}</span>
             </div>
-            <div>
-                <div blurry-image-load
-                     layout="column"
-                     large-image="repository.owner.avatar_url"
-                     small-image="repository.owner.avatar_url + '&s=20'"
-                     style="margin:10px;">
-                </div>
+            <div flex blurry-image-load
+                 layout="column"
+                 large-image="repository.owner.avatar_url"
+                 small-image="repository.owner.avatar_url + '&s=20'"
+                 style="margin:10px;">
             </div>
         </div>
         <div layout="row" layout-align="end end">
