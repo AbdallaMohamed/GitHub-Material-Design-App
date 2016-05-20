@@ -1,28 +1,59 @@
-<md-content flex layout="row" layout-padding>
-    <md-input-container flex>
-        <label>Filter</label>
-        <input ng-model="searchQuery" flex ng-model-options="{debounce: 350}" ng-change="search(searchQuery)">
-    </md-input-container>
-</md-content>
+<div layout="column" layout-align="start stretch">
 
-<md-content layout="column" layout-padding>
-    <div ng-repeat="repository in repositories | limitTo : 3" layout="column" layout-align="start stretch"
-         layout-padding layout-margin md-whiteframe="2">
-        <div layout="row" layout-align="space-between stretch">
-            <div flex-xs="50" flex-sm="60" flex-md="70" flex-lg="80" layout="column" layout-align="start start">
-                <span class="md-headline">{{ repository.name }}</span>
-                <span class="md-subhead" style="margin-top: 5px;">{{ repository.description | limitTo : 150 }}</span>
-            </div>
-            <div flex blurry-image-load
-                 layout="column"
-                 large-image="repository.owner.avatar_url"
-                 small-image="repository.owner.avatar_url + '&s=20'"
-                 style="margin:10px;">
-            </div>
-        </div>
-        <div layout="row" layout-align="end end">
-            <md-button ng-href="{{repository.html_url}}">Visit The Repo on GitHub</md-button>
-            <md-button ui-sref="user({username: repository.owner.login})">Go To Author</md-button>
-        </div>
+    <div layout="column" layout-padding>
+        <md-input-container style="max-height: 0px">
+            <label>Search for a user by name...</label>
+            <input ng-model="search.query" flex ng-model-options="{debounce: 350}" ng-change="searchRepositories()">
+            <md-progress-circular md-mode="indeterminate" ng-if="loading"></md-progress-circular>
+        </md-input-container>
     </div>
-</md-content>
+
+    <div layout-padding layout="row" layout-align="space-between center" layout-xs="column"
+         layout-align-xs="start stretch" class="search-filters">
+        <span class="md-subhead" style="margin-right: 10px;" hide-xs>Filter</span>
+        <md-input-container flex style="margin-bottom: 6px;">
+            <md-select ng-model="search.sort" md-selected-text="'With the most ' + (search.sort || '...')"
+                       ng-change="searchRepositories()">
+                <md-optgroup label="Search Filters">
+                    <md-option ng-value="searchFilter" ng-repeat="searchFilter in searchOptions.filters">
+                        {{searchFilter}}
+                    </md-option>
+                </md-optgroup>
+            </md-select>
+        </md-input-container>
+        <md-input-container style="margin-top: 18px;">
+            <md-switch ng-model="search.order" aria-label="Order By" ng-true-value="'asc'" ng-false-value="'desc'"
+                       class="md-primary" ng-change="searchRepositories()">
+                {{ search.order == 'asc' ? 'Ascending' : 'Descending' }}
+            </md-switch>
+        </md-input-container>
+    </div>
+
+    <md-content layout-padding ng-show="!repositories.length && !loading" class="no-users-found">
+        <h3 class="headline" layout-padding>No repositories found...</h3>
+    </md-content>
+
+    <md-content layout-padding layout="column" layout-align="start stretch">
+        <md-grid-list
+                md-cols-xs="2" md-cols-sm="3" md-cols-md="4" md-cols-lg="5"
+                md-row-height-gt-md="1:1" md-row-height="2:2"
+                md-gutter="12px" md-gutter-gt-sm="8px">
+            <md-grid-tile ng-repeat="repository in repositories"
+                          md-rowspan="1"
+                          md-colspan="1"
+                          md-colspan-sm="1"
+                          md-colspan-xs="1"
+                          class="clickable user-tile"
+                          md-whiteframe="2"
+                          ui-sref="repository({owner: repository.owner.login, name: repository.name})">
+                <div flex blurry-image-load
+                     layout="column"
+                     large-image="repository.owner.avatar_url"
+                     small-image="repository.owner.avatar_url + '&s=20'"
+                     style="margin:10px;">
+                </div>
+                <md-grid-tile-footer><h3>{{repository.name}}</h3></md-grid-tile-footer>
+            </md-grid-tile>
+        </md-grid-list>
+    </md-content>
+</div>

@@ -60,7 +60,6 @@ angular.module('ngGitHub').run(function ($rootScope) {
         // Redirect to `/login` with the `error_reason`.
         return $window.location.href = '/login?error_reason=' + rejection.data.error;
     });
-
 });
 
 // App Main Controller
@@ -82,4 +81,4 @@ angular.module('ngGitHub').controller('appController', function ($scope, $mdSide
     $scope.closeSideNav = function name(params) {
         $mdSidenav('left').close();
     };
-});
+}); 

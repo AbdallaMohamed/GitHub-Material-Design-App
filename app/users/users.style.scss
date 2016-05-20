@@ -63,12 +63,14 @@
   }
 }
 
+
+// loading spinner in search text-input
+
 .loading-spinner-div {
   position: absolute;
   left: 0;
   right: 0;
 }
-
 
 md-input-container > md-progress-circular {
   -webkit-transition: opacity 0.2s ease-out;
@@ -97,5 +99,26 @@ md-input-container > md-progress-circular.ng-leave-active {
 }
 
 md-input-container > md-progress-circular.ng-leave {
+  opacity: 0;
+}
+
+
+
+
+// No users found text
+
+.no-users-found {
+  opacity: 1;
+  max-height: 50px;
+  overflow-y: hidden;
+}
+.no-users-found.ng-hide-add,
+.no-users-found.ng-hide-remove {
+  transition: all ease-out 950ms;
+
+}
+
+.no-users-found.ng-hide {
+  max-height: 0px;
   opacity: 0;
 }

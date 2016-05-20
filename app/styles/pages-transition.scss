@@ -1,50 +1,50 @@
-
-// Fading in and out of the UI-View
-ui-view.ng-enter,
-ui-view.ng-leave {
-  //position: absolute;
-  //left: 0;
-  //right: 0;
-  -webkit-transition: all 0.35s ease-out;
-  -moz-transition: all 0.35s ease-out;
-  -o-transition: all 0.35s ease-out;
-  transition: all 0.35s ease-out;
-}
-
-ui-view.ng-enter {
-  opacity: 0;
-  //-webkit-transform: translate3d(0, 100px, 0);
-  //-moz-transform: translate3d(0, 100px, 0);
-  //transform: translate3d(0, 100px, 0);
-}
-
-ui-view.ng-enter-active {
-  opacity: 1;
-  //-webkit-transform: translate3d(0, 0, 0);
-  //-moz-transform: translate3d(0, 0, 0);
-  //transform: translate3d(0, 0, 0);
-}
-
-ui-view.ng-enter-stagger,
-ui-view.ng-leave-stagger {
-  /* this will have a 100ms delay between each successive leave animation */
-  //transition-delay: 1s;
-
-  /* As of 1.4.4, this must always be set: it signals ngAnimate
-    to not accidentally inherit a delay property from another CSS class */
-  //transition-duration: 1s;
-}
-
-ui-view.ng-leave {
-  opacity: 1;
-  //-webkit-transform: translate3d(0, 0, 0);
-  //-moz-transform: translate3d(0, 0, 0);
-  //transform: translate3d(0, 0, 0);
-}
-
-ui-view.ng-leave-active {
-  opacity: 0;
-  //-webkit-transform: translate3d(0, 100px, 0);
-  //-moz-transform: translate3d(0, 100px, 0);
-  //transform: translate3d(0, 100px, 0);
-}
+//
+//// Fading in and out of the UI-View
+//ui-view.ng-enter,
+//ui-view.ng-leave {
+//  //position: absolute;
+//  //left: 0;
+//  //right: 0;
+//  -webkit-transition: all 0.35s ease-out;
+//  -moz-transition: all 0.35s ease-out;
+//  -o-transition: all 0.35s ease-out;
+//  transition: all 0.35s ease-out;
+//}
+//
+//ui-view.ng-enter {
+//  opacity: 0;
+//  //-webkit-transform: translate3d(0, 100px, 0);
+//  //-moz-transform: translate3d(0, 100px, 0);
+//  //transform: translate3d(0, 100px, 0);
+//}
+//
+//ui-view.ng-enter-active {
+//  opacity: 1;
+//  //-webkit-transform: translate3d(0, 0, 0);
+//  //-moz-transform: translate3d(0, 0, 0);
+//  //transform: translate3d(0, 0, 0);
+//}
+//
+//ui-view.ng-enter-stagger,
+//ui-view.ng-leave-stagger {
+//  /* this will have a 100ms delay between each successive leave animation */
+//  //transition-delay: 1s;
+//
+//  /* As of 1.4.4, this must always be set: it signals ngAnimate
+//    to not accidentally inherit a delay property from another CSS class */
+//  //transition-duration: 1s;
+//}
+//
+//ui-view.ng-leave {
+//  opacity: 1;
+//  //-webkit-transform: translate3d(0, 0, 0);
+//  //-moz-transform: translate3d(0, 0, 0);
+//  //transform: translate3d(0, 0, 0);
+//}
+//
+//ui-view.ng-leave-active {
+//  opacity: 0;
+//  //-webkit-transform: translate3d(0, 100px, 0);
+//  //-moz-transform: translate3d(0, 100px, 0);
+//  //transform: translate3d(0, 100px, 0);
+//}

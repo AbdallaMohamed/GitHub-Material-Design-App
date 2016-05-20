@@ -82,3 +82,14 @@
 .repo-card {
 
 }
+
+md-divider {
+  margin: 20px 0;
+}
+
+md-grid-tile-footer {
+  h3 {
+    font-weight: bold !important;
+    text-shadow: 2px 1px 2px rgb(0, 0, 0);
+  }
+}

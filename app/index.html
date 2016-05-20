@@ -16,7 +16,7 @@
 
 
 <!--App-Loading Screen-->
-<div class="splash-screen fade" ng-if="!$root.appLoaded">
+<div class="splash-screen fade-in-out" ng-if="!$root.appLoaded">
     <!--css loader-->
     <div class="showbox">
         <div class="loader">
@@ -59,8 +59,10 @@
         <md-content layout="column" flex hide-header-parent>
             <ng-include src="'toolbar/toolbar.tmpl.html'" ng-controller="toolbarController"
                         hide-header hide-header-on="true"></ng-include>
-            <ui-view flex>
-            </ui-view>
+            <md-content>
+                <ui-view autoscroll="true">
+                </ui-view>
+            </md-content>
         </md-content>
 
 
@@ -72,7 +74,6 @@
 <script src="cache/3rdParty.js"></script>
 <script src="cache/main.js"></script>
 <script src="cache/partials.js"></script>
-
 
 </body>
 

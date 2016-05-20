@@ -15,7 +15,8 @@
             <input type="password" ng-model="user.password" flex ng-model-options="{debounce: 350}">
         </md-input-container>
         <div layout="row" layout-lt-md="column" layout-align="center center">
-            <md-button class="md-raised md-primary md-block login-button" ng-click="login()" ng-disabled="!user.username && !user.password">
+            <md-button class="md-raised md-primary md-block login-button" ng-click="login()"
+                       ng-disabled="!user.username && !user.password">
                 <ng-md-icon icon="login" size="25"></ng-md-icon>
                 <span class="md-subhead">Login</span>
             </md-button>
@@ -24,9 +25,10 @@
                 <span class="md-subhead">Login With GitHub</span>
             </md-button>
         </div>
+        <md-divider></md-divider>
         <div layout="row" layout-align="end center">
             <span class="md-body-2">Don't have an account?</span>
-            <md-button class="md-raised md-primary md-block login-button" ui-sref="signUp">
+            <md-button class="md-raised md-primary md-block login-button" ng-click="signUp()">
                 <ng-md-icon icon="account_circle" size="25"></ng-md-icon>
                 <span class="md-subhead">Sign up</span>
             </md-button>

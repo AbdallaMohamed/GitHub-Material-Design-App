@@ -5,11 +5,10 @@ angular.module('ngGitHub').controller('usersCtrl', function ($scope, User) {
     $scope.search = {
         query: 'Abdalla Mohamed',
         order: 'desc',
-        sort: null,
-        selectedFilter: null
+        sort: null
     };
     $scope.searchOptions = {
-        filters: ['Followers', 'Repositories']
+        filters: ['followers', 'repositories']
     };
 
     // a self invoking function that handles searching for a user through the search action, if a query exists.

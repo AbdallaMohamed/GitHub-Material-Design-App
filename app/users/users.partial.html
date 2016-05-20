@@ -11,9 +11,8 @@
     <div layout-padding layout="row" layout-align="space-between center" layout-xs="column"
          layout-align-xs="start stretch" class="search-filters">
         <span class="md-subhead" style="margin-right: 10px;" hide-xs>Filter</span>
-        <md-input-container flex style="margin-bottom: 20px;">
-            <!--<label>With the most ...</label>-->
-            <md-select ng-model="search.selectedFilter"
+        <md-input-container flex style="margin-bottom: 6px;">
+            <md-select ng-model="search.sort" md-selected-text="'With the most ' + (search.sort || '...')"
                        ng-change="searchUsers()">
                 <md-optgroup label="Search Filters">
                     <md-option ng-value="searchFilter" ng-repeat="searchFilter in searchOptions.filters">
@@ -22,7 +21,7 @@
                 </md-optgroup>
             </md-select>
         </md-input-container>
-        <md-input-container>
+        <md-input-container style="margin-top: 18px;">
             <md-switch ng-model="search.order" aria-label="Order By" ng-true-value="'asc'" ng-false-value="'desc'"
                        class="md-primary" ng-change="searchUsers()">
                 {{ search.order == 'asc' ? 'Ascending' : 'Descending' }}
@@ -30,8 +29,11 @@
         </md-input-container>
     </div>
 
+    <md-content layout-padding ng-show="!users.length && !loading" class="no-users-found">
+        <h3 class="headline" layout-padding>No users found...</h3>
+    </md-content>
 
-    <md-content layout-padding>
+    <md-content layout-padding layout="column" layout-align="start stretch">
         <md-grid-list
                 md-cols-xs="2" md-cols-sm="3" md-cols-md="4" md-cols-lg="5"
                 md-row-height-gt-md="1:1" md-row-height="2:2"

@@ -7,15 +7,17 @@
     left: 0px;
     right: 0px;
     top: 0px;
+}
+
+
+.fade-in-out {
     opacity: 1;
 }
-
-.splash-screen.ng-hide-add,
-.splash-screen.ng-hide-remove {
-    transition: all ease-out 1s;
+.fade-in-out.ng-hide-add,
+.fade-in-out.ng-hide-remove {
+    transition: all ease-out 150ms;
 
 }
-
-.splash-screen.ng-hide {
+.fade-in-out.ng-hide {
     opacity: 0;
 }
