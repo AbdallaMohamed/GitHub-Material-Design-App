@@ -1,0 +1,28 @@
+.repository-card-header {
+
+
+
+}
+
+.repository-card-body {
+  .info-list {
+    md-list-item {
+      ng-md-icon {
+        margin-right: 15px;
+      }
+      .md-list-item-text {
+        overflow-x: hidden;
+      }
+    }
+  }
+
+  md-list {
+    md-list-item {
+      ng-md-icon {
+        margin-right: 5px;
+        background-color: #276C7B;
+        color: white;
+      }
+    }
+  }
+}

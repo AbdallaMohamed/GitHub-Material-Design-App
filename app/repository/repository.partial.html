@@ -1,6 +1,91 @@
-<div layout="column" layout-align="start stretch">
+<div flex layout="column" ng-hide="loading" layout-align="start stretch">
+    <md-card class="repository-card md-whiteframe-z2">
 
-    <div>{{owner}}</div>
-    <div>{{name}}</div>
+        <div class="repository-card-header" layout="row" layout-padding>
+            <div class="title" flex="70" layout="column">
+                <h1 class="md-headline">{{name}}</h1>
+                <span class="md-sibhead">{{'By: ' + owner}}</span>
+            </div>
+            <div class="image" flex="30">
+                <div blurry-image-load ui-sref="user({username: owner})"
+                     flex
+                     large-image="repository.owner.avatar_url"
+                     small-image="repository.owner.avatar_url + '&s=20'">
+                </div>
+            </div>
+        </div>
+        <div class="repository-card-body">
+            <md-tabs md-dynamic-height md-swipe-content md-border-bottom md-stretch-tabs="auto" class="md-primary">
+                <md-tab label="About">
+                    <md-content>
+                        <section>
+                            <md-subheader class="md-primary">About repository:</md-subheader>
 
+                            <md-list>
+                                <md-list class="info-list">
+
+                                    <md-list-item class="md-2-line">
+                                        <ng-md-icon icon="home" class="md-avatar-icon"></ng-md-icon>
+                                        <div class="md-list-item-text">
+                                            <h3>Description</h3>
+                                            <p>{{ repository.description || 'No description.' }}</p>
+                                        </div>
+                                    </md-list-item>
+
+                                </md-list>
+                            </md-list>
+
+
+                        </section>
+
+                        <!--<md-divider></md-divider>-->
+
+                        <!--<section>-->
+                        <!--<md-subheader class="md-primary">What They're Up To</md-subheader>-->
+                        <!--<md-list class="info-list">-->
+                        <!--<md-list-item class="md-2-line" ng-repeat="item in user.stuff">-->
+                        <!--<ng-md-icon icon="{{item.icon}}" class="md-avatar-icon"></ng-md-icon>-->
+                        <!--<div class="md-list-item-text">-->
+                        <!--<h3>{{ item.value }}</h3>-->
+                        <!--<p>{{ item.title }}</p>-->
+                        <!--</div>-->
+                        <!--</md-list-item>-->
+                        <!--</md-list>-->
+                        <!--</section>-->
+                    </md-content>
+                </md-tab>
+                <md-tab label="Forks">
+                    <md-content>
+                        <md-list>
+                            <md-subheader class="md-primary">Has {{forks.length}} forks.</md-subheader>
+                            <md-list-item class="md-2-line" ng-repeat="repository in forks"
+                                          ui-sref="repository({owner: repository.owner.login, name: repository.name})">
+                                <img ng-src="{{repository.owner.avatar_url}}" class="md-avatar"
+                                     alt="{{following.name}}"/>
+                                <div class="md-list-item-text">
+                                    <h3>{{repository.name}}</h3>
+                                    <p>{{repository.url}}</p>
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Contributors">
+                    <md-content>
+                        <md-list>
+                            <md-subheader class="md-primary">Has {{contributors.length}} contributors.</md-subheader>
+                            <md-list-item class="md-2-line" ng-repeat="user in contributors"
+                                          ui-sref="user({username: user.login})">
+                                <img ng-src="{{user.avatar_url}}" class="md-avatar" alt="{{user.name}}"/>
+                                <div class="md-list-item-text">
+                                    <h3>{{user.login}}</h3>
+                                    <p>{{user.url}}</p>
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </div>
+    </md-card>
 </div>

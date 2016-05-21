@@ -21,7 +21,7 @@
             </div>
         </div>
         <!--  user-card-body  -->
-        <md-content layout="column" class="user-card-body">
+        <md-content layout="column" class="repository-card-body">
             <md-tabs md-dynamic-height md-swipe-content md-border-bottom md-stretch-tabs="auto" class="md-primary">
                 <md-tab label="About">
                     <md-content>
@@ -33,7 +33,7 @@
                                         <p>This person has no personal information.</p>
                                     </div>
                                 </md-list-item>
-                                <md-list-item class="md-2-line" md-sticky ng-repeat="item in user.info">
+                                <md-list-item class="md-2-line" md-sticky ng-repeat="item in user.info" ng-href="{{item.link}}">
                                     <ng-md-icon icon="{{item.icon}}" class="md-avatar-icon"></ng-md-icon>
                                     <div class="md-list-item-text">
                                         <h3>{{ item.value }}</h3>

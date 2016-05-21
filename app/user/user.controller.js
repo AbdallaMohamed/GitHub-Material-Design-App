@@ -29,6 +29,7 @@ angular.module('ngGitHub').controller('userCtrl', function ($scope, $stateParams
             $scope.user.info.push({
                 title: 'Blog',
                 value: $scope.user.blog,
+                link: $scope.user.blog,
                 icon: 'mode_edit'
             });
 
