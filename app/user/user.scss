@@ -1,0 +1,60 @@
+.user-card-header {
+  position: relative;
+  overflow: hidden;
+  background-color: black;
+
+  .background-image-container {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.75;
+
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+  }
+
+  .user-profile {
+    padding: 20px 0px;
+
+    .content {
+      z-index: 4;
+
+      .user-profile-picture {
+        img {
+          border-radius: 50%;
+          max-width: 200px;
+          max-height: 200px;
+          margin: 0 auto;
+          -webkit-box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.28);
+          -moz-box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.28);
+          box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.28);
+        }
+      }
+    }
+  }
+
+}
+
+.user-card-body {
+  .info-list {
+    md-list-item {
+      .md-list-item-text {
+        overflow-x: hidden;
+      }
+    }
+  }
+
+  md-list {
+    md-list-item {
+      ng-md-icon {
+        background-color: #276C7B;
+        color: white;
+      }
+    }
+  }
+}

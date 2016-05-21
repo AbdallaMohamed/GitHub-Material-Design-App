@@ -16,30 +16,28 @@
 <md-menu-content layout="column">
     <md-menu-item>
         <md-button ng-click="itemClicked('home')" layout="row" layout-align="start center"
-                   ng-class="{'md-accent md-hue-3' : isInState('home')}">
+                   ng-class="{'md-primary md-hue-3' : isInState('home')}">
             <ng-md-icon icon="home"></ng-md-icon>
             <span flex>Home</span>
         </md-button>
     </md-menu-item>
     <md-menu-item>
         <md-button ng-click="itemClicked('users')" layout="row" layout-align="start center"
-                   ng-class="{'md-accent md-hue-3' : isInState('users')}">
+                   ng-class="{'md-primary md-hue-3' : isInState('user,users')}">
             <ng-md-icon icon="people"></ng-md-icon>
             <span flex>Users</span>
         </md-button>
     </md-menu-item>
     <md-menu-item>
         <md-button ng-click="itemClicked('repositories')" layout="row" layout-align="start center"
-                   ng-class="{'md-accent md-hue-3' : isInState('repositories')}">
+                   ng-class="{'md-primary md-hue-3' : isInState('repository,repositories')}">
             <ng-md-icon icon="github-box"></ng-md-icon>
             <span flex>Repositories</span>
-
-
         </md-button>
     </md-menu-item>
     <md-menu-item>
         <md-button ng-click="itemClicked('documentation')" layout="row" layout-align="start center"
-                   ng-class="{'md-accent md-hue-3' : isInState('documentation')}">
+                   ng-class="{'md-primary md-hue-3' : isInState('documentation')}">
             <ng-md-icon icon="help"></ng-md-icon>
             <span flex>Documentation</span>
         </md-button>

@@ -1,91 +1,68 @@
-<md-content flex class="md-padding" layout="column" ng-hide="loading">
-    <md-card>
-        <md-card-header layout="row" layout-xs="column" layout="space-between center">
-            <md-card-avatar>
-                <img ng-src="{{user.avatar_url}}" class="md-user-avatar"/>
-            </md-card-avatar>
+<md-content flex layout="column" ng-hide="loading">
 
-            <md-card-header-text flex="grow">
-                <span class="md-title">{{user.name}}</span>
-                <a class="md-subhead" ng-href="{{user.html_url}}" target="_blank">
-                    {{user.html_url}}
-                </a>
-            </md-card-header-text>
+    <md-card class="user-card md-whiteframe-z2">
 
-            <md-card-header-text layout="column" flex="20">
-                <span class="md-body-2">Registered at: </span>
-                <span class="md-subhead">
-                    {{user.created_at | date: 'short'}}
-                </span>
-            </md-card-header-text>
-        </md-card-header>
-        <md-divider></md-divider>
-        <md-list layout="column" class="profile-card layout-bleed">
+        <!--  user-user-card-header  -->
+        <div class="user-card-header">
 
+            <div layout="column" layout-align="start stretch" class="user-profile white-text">
 
-            <div class="md-title" layout="row" layout-padding>
-                <ng-md-icon icon="person"></ng-md-icon>
-                <span flex="25">Name</span>
-                <span class="md-subhead" flex>
-                    {{user.name}}
-                </span>
+                <div class="background-image-container"
+                     style="background-image: url('{{user.avatar_url}}')"></div>
+
+                <div class="content text-center" layout="column">
+                    <div class="user-profile-picture text-center margin-up-bottom-medium" layout="row"
+                         layout-align="center center">
+                        <img ng-src="{{user.avatar_url}}" class="md-user-avatar"/>
+                    </div>
+                    <div class="margin-up-bottom-medium">
+                        <span class="md-headline">{{user.name}}</span>
+                    </div>
+                    <div class="md-subhead" ng-if="user.email">
+                        <ng-md-icon icon="email" class="margin-left-right-medium"></ng-md-icon>
+                        {{user.email}}
+                    </div>
+                </div>
             </div>
-            <md-divider></md-divider>
-            <div class="md-title" layout="row" layout-padding>
-                <ng-md-icon icon="location_on"></ng-md-icon>
-                <span flex="25">Location</span>
-                <span class="md-subhead" flex>
-                    {{user.location}}
-                </span>
-            </div>
-            <md-divider></md-divider>
+        </div>
 
-            <div class="md-title" layout="row" layout-padding>
-                <ng-md-icon icon="work"></ng-md-icon>
-                <span flex="25">Company</span>
-                <span class="md-subhead" flex>
-                    {{user.company}}
-                </span>
-            </div>
-            <md-divider></md-divider>
 
-            <div class="md-title" layout="row" layout-padding>
-                <ng-md-icon icon="email"></ng-md-icon>
-                <span flex="25">Email</span>
-                <span class="md-subhead" flex>
-                    {{user.email}}
-                </span>
-            </div>
-            <md-divider></md-divider>
-
-            <div class="md-title" layout="row" layout-padding>
-                <ng-md-icon icon="person_outline"></ng-md-icon>
-                <span flex="25">Blog</span>
-                <a class="md-subhead" flex ng-href="{{user.blog}}">
-                    {{user.blog}}
-                </a>
-            </div>
+        <!--  user-user-card-header  -->
+        <md-content layout="column" class="user-card-body">
+            <section>
+                <md-subheader class="md-primary">About them</md-subheader>
+                <md-list class="info-list">
+                    <md-list-item ng-if="!user.info.length">
+                        <div class="md-list-item-text">
+                            <p>This person has no personal information.</p>
+                        </div>
+                    </md-list-item>
+                    <md-list-item class="md-2-line" md-sticky ng-repeat="item in user.info">
+                        <ng-md-icon icon="{{item.icon}}" class="md-avatar-icon"></ng-md-icon>
+                        <div class="md-list-item-text">
+                            <h3>{{ item.value }}</h3>
+                            <p>{{ item.title }}</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </section>
 
             <md-divider></md-divider>
 
-            <md-list-item class="md-title" layout="row" ng-click="showRepositories($event)">
-                <ng-md-icon icon="github-box" layout-bleed></ng-md-icon>
-                <span flex="25">Public Repositories</span>
-                <a class="md-subhead md-primary" flex layout-bleed>
-                    {{user.public_repos}} Repositories
-                </a>
-            </md-list-item>
+            <section>
+                <md-subheader class="md-primary">What They're Up To</md-subheader>
+                <md-list class="info-list">
+                    <md-list-item class="md-2-line" ng-repeat="item in user.stuff">
+                        <ng-md-icon icon="{{item.icon}}" class="md-avatar-icon"></ng-md-icon>
+                        <div class="md-list-item-text">
+                            <h3>{{ item.value }}</h3>
+                            <p>{{ item.title }}</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </section>
+        </md-content>
 
-
-            <md-divider></md-divider>
-
-            <md-list-item class="md-title" layout="row" ng-click="showFollowers($event)">
-                <ng-md-icon icon="people" layout-bleed></ng-md-icon>
-                <span flex="25" layout-bleed>Followers</span>
-                <a class="md-subhead md-primary" flex layout-bleed>
-                    {{user.followers}} Followers
-                </a>
-            </md-list-item>
-        </md-list>
     </md-card>
+
 </md-content>
