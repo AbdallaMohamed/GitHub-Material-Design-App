@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
+    replace = require('gulp-replace'),
     watch = require('gulp-watch'),
     templateCache = require('gulp-angular-templatecache'),
     sass = require('gulp-sass'),
@@ -21,10 +22,10 @@ var gulp = require('gulp'),
 
 gulp.task('app:JS', function () {
     gulp.src([
-        'app/**/*.js',
-        '!app/dist/*.js',
-        '!app/cache/*.js'
-    ])
+            'app/**/*.js',
+            '!app/dist/*.js',
+            '!app/cache/*.js'
+        ])
         .pipe(ngAnnotate())
         .pipe(angularFilesort())
         .pipe(concat('main.js'))
@@ -36,10 +37,10 @@ gulp.task('app:JS', function () {
 
 gulp.task('app:CSS', function () {
     return gulp.src([
-        'app/**/*.scss',
-        '!app/dist/*.css',
-        '!app/cache/*.css'
-    ])
+            'app/**/*.scss',
+            '!app/dist/*.css',
+            '!app/cache/*.css'
+        ])
         .pipe(sass())
         .pipe(minifyCss())
         .pipe(concat('main.css'))
@@ -101,27 +102,63 @@ function run(taskName) {
 
 // for deployment
 
-gulp.task('deploy', [
+gulp.task('local', [
     'app:JS',
     'app:HTML',
     'app:CSS',
     '3rdParty:JS',
     '3rdParty:CSS'
 ], function () {
+
+
+
+    // replace the script and stylsheet references in index.html
+    gulp.src([
+            'app/index.html'
+        ])
+        .pipe(replace('<link rel="stylesheet" href="dist/dist.css">', '<!--<link rel="stylesheet" href="dist/dist.css"   >-->'))
+        .pipe(replace('<!--<link rel="stylesheet" href="cache/main.css"   >-->', '<link rel="stylesheet" href="cache/main.css">'))
+        .pipe(replace('<!--<link rel="stylesheet" href="cache/3rdParty.css"   >-->', '<link rel="stylesheet" href="cache/3rdParty.css">'))
+
+        .pipe(replace('<script src="dist/dist.js"></script>', '<!--<script src="dist/dist.js"   ></script>-->'))
+        .pipe(replace('<!--<script src="cache/3rdParty.js"   ></script>-->', '<script src="cache/3rdParty.js"></script>'))
+        .pipe(replace('<!--<script src="cache/main.js"   ></script>-->', '<script src="cache/main.js"></script>'))
+        .pipe(replace('<!--<script src="cache/partials.js"   ></script>-->', '<script src="cache/partials.js"></script>'))
+        .pipe(gulp.dest('app/'));
+
+});
+
+
+gulp.task('deploy', ['local'], function () {
     // final packaging
     // concatenate all JS files into 1 JS file and all CSS files into 1 CSS file
     gulp.src([
-        'app/cache/3rdParty.js',
-        'app/cache/main.js',
-        'app/cache/partials.js'
-    ])
+            'app/cache/3rdParty.js',
+            'app/cache/main.js',
+            'app/cache/partials.js'
+        ])
         .pipe(concat('dist.js'))
         .pipe(gulp.dest('app/dist/'));
 
     gulp.src([
-        'app/cache/main.css',
-        'app/cache/3rdParty.css'
-    ])
+            'app/cache/main.css',
+            'app/cache/3rdParty.css'
+        ])
         .pipe(concat('dist.css'))
         .pipe(gulp.dest('app/dist/'));
+
+
+    // replace the script and stylsheet references in index.html
+    gulp.src([
+            'app/index.html'
+        ])
+        .pipe(replace('<!--<link rel="stylesheet" href="dist/dist.css"   >-->', '<link rel="stylesheet" href="dist/dist.css">'))
+        .pipe(replace('<link rel="stylesheet" href="cache/main.css">', '<!--<link rel="stylesheet" href="cache/main.css"   >-->'))
+        .pipe(replace('<link rel="stylesheet" href="cache/3rdParty.css">', '<!--<link rel="stylesheet" href="cache/3rdParty.css"   >-->'))
+
+        .pipe(replace('<!--<script src="dist/dist.js"   ></script>-->', '<script src="dist/dist.js"></script>'))
+        .pipe(replace('<script src="cache/3rdParty.js"></script>', '<!--<script src="cache/3rdParty.js"   ></script>-->'))
+        .pipe(replace('<script src="cache/main.js"></script>', '<!--<script src="cache/main.js"   ></script>-->'))
+        .pipe(replace('<script src="cache/partials.js"></script>', '<!--<script src="cache/partials.js"   ></script>-->'))
+        .pipe(gulp.dest('app/'));
 });

@@ -1,0 +1,92 @@
+<md-content flex layout="column" ng-hide="loading">
+    <md-card class="user-card md-whiteframe-z2">
+        <!--  user-user-card-header  -->
+        <div class="user-card-header">
+            <div layout="column" layout-align="start stretch" class="user-profile white-text">
+                <div class="background-image-container"
+                     style="background-image: url('{{user.avatar_url}}')"></div>
+                <div class="content text-center" layout="column">
+                    <div class="user-profile-picture text-center margin-up-bottom-medium" layout="row"
+                         layout-align="center center">
+                        <img ng-src="{{user.avatar_url}}" class="md-user-avatar"/>
+                    </div>
+                    <div class="margin-up-bottom-medium">
+                        <span class="md-headline">{{user.name}}</span>
+                    </div>
+                    <div class="md-subhead" ng-if="user.email">
+                        <ng-md-icon icon="email" class="margin-left-right-medium"></ng-md-icon>
+                        {{user.email}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  user-card-body  -->
+        <md-content layout="column" class="user-card-body">
+            <md-tabs md-dynamic-height md-swipe-content md-border-bottom md-stretch-tabs="auto" class="md-primary">
+                <md-tab label="About">
+                    <md-content>
+                        <section>
+                            <md-subheader class="md-primary">About them</md-subheader>
+                            <md-list class="info-list">
+                                <md-list-item ng-if="!user.info.length">
+                                    <div class="md-list-item-text">
+                                        <p>This person has no personal information.</p>
+                                    </div>
+                                </md-list-item>
+                                <md-list-item class="md-2-line" md-sticky ng-repeat="item in user.info">
+                                    <ng-md-icon icon="{{item.icon}}" class="md-avatar-icon"></ng-md-icon>
+                                    <div class="md-list-item-text">
+                                        <h3>{{ item.value }}</h3>
+                                        <p>{{ item.title }}</p>
+                                    </div>
+                                </md-list-item>
+                            </md-list>
+                        </section>
+
+                        <md-divider></md-divider>
+
+                        <section>
+                            <md-subheader class="md-primary">What They're Up To</md-subheader>
+                            <md-list class="info-list">
+                                <md-list-item class="md-2-line" ng-repeat="item in user.stuff">
+                                    <ng-md-icon icon="{{item.icon}}" class="md-avatar-icon"></ng-md-icon>
+                                    <div class="md-list-item-text">
+                                        <h3>{{ item.value }}</h3>
+                                        <p>{{ item.title }}</p>
+                                    </div>
+                                </md-list-item>
+                            </md-list>
+                        </section>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Repositories">
+                    <md-content>
+                        <md-list>
+                            <md-subheader class="md-primary">Has {{repositoriesList.length}} repositories.</md-subheader>
+                            <md-list-item class="md-2-line" ng-repeat="repository in repositoriesList" ui-sref="repository({owner: repository.owner.login, name: repository.name})">
+                                <img ng-src="{{repository.owner.avatar_url}}" class="md-avatar" alt="{{following.name}}" />
+                                <div class="md-list-item-text">
+                                    <h3>{{repository.name}}</h3>
+                                    <p>{{repository.description}}</p>
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Following">
+                    <md-content>
+                        <md-list>
+                            <md-subheader class="md-primary">Following {{followingsList.length}} accounts.</md-subheader>
+                            <md-list-item class="md-2-line" ng-repeat="user in followingsList" ui-sref="user({username: user.login})">
+                                <img ng-src="{{user.avatar_url}}" class="md-avatar" alt="{{user.name}}" />
+                                <div class="md-list-item-text">
+                                    <h3>{{user.login}}</h3>
+                                    <p>{{user.url}}</p>
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+    </md-card>
+</md-content>

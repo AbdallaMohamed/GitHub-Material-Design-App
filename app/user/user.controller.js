@@ -60,34 +60,8 @@ angular.module('ngGitHub').controller('userCtrl', function ($scope, $stateParams
                 icon: 'access_time'
             });
     });
-
-    // event handler for when a user clicks on "Show Followers": opens an angular-material modal with the results
-    $scope.showFollowers = function (ev) {
-        $mdDialog.show({
-            controller: 'followersModal',
-            templateUrl: 'user/views/followers.partial.html',
-            parent: angular.element(window.body),
-            targetEvent: ev,
-            clickOutsideToClose: true,
-            fullscreen: ($mdMedia('sm') || $mdMedia('xs')),
-            locals: {
-                user: $scope.user
-            }
-        })
-    };
-
-    // event handler for when a user clicks on "Show Repositories": opens an angular-material modal with the results
-    $scope.showRepositories = function (ev) {
-        $mdDialog.show({
-            controller: 'repositoriesModal',
-            templateUrl: 'user/views/repositories.partial.html',
-            parent: angular.element(window.body),
-            targetEvent: ev,
-            clickOutsideToClose: true,
-            fullscreen: ($mdMedia('sm') || $mdMedia('xs')),
-            locals: {
-                user: $scope.user
-            }
-        })
-    };
+    $scope.followingsList = User.followings({username: $stateParams.username}, function (){
+    });
+    $scope.repositoriesList = User.repositories({username: $stateParams.username}, function (){
+    });
 });

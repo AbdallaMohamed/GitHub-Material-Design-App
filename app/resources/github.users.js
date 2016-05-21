@@ -17,6 +17,12 @@ angular.module('ngGitHub').factory('User', function ($resource, ApiUrl) {
             method: 'GET',
             url: ApiUrl + '/users/:username/followers',
             isArray: true
+        },
+        // custom action for finding the followings of a user
+        followings: {
+            method: 'GET',
+            url: ApiUrl + '/users/:username/following',
+            isArray: true
         }
     });
 });
