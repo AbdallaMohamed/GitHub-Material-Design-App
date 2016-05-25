@@ -22,22 +22,38 @@
         </div>
         <!--  user-card-body  -->
         <md-content layout="column" class="repository-card-body">
-            <md-tabs md-dynamic-height md-swipe-content md-border-bottom md-stretch-tabs="auto" class="md-primary">
+            <md-tabs md-selected="selectedIndex" ng-init="selectedIndex = 0" md-dynamic-height md-swipe-content md-border-bottom md-stretch-tabs="auto" class="md-primary">
                 <md-tab label="About">
                     <md-content>
                         <section>
                             <md-subheader class="md-primary">About them</md-subheader>
                             <md-list class="info-list">
-                                <md-list-item ng-if="!user.info.length">
+                                <md-list-item class="md-2-line" md-sticky>
+                                    <ng-md-icon icon="person" class="md-avatar-icon"></ng-md-icon>
                                     <div class="md-list-item-text">
-                                        <p>This person has no personal information.</p>
+                                        <h3>Bio</h3>
+                                        <p>{{ user.bio || 'This user has no bio.'}}</p>
                                     </div>
                                 </md-list-item>
-                                <md-list-item class="md-2-line" md-sticky ng-repeat="item in user.info" ng-href="{{item.link}}">
-                                    <ng-md-icon icon="{{item.icon}}" class="md-avatar-icon"></ng-md-icon>
+                                <md-list-item class="md-2-line" md-sticky>
+                                    <ng-md-icon icon="location_on" class="md-avatar-icon"></ng-md-icon>
                                     <div class="md-list-item-text">
-                                        <h3>{{ item.value }}</h3>
-                                        <p>{{ item.title }}</p>
+                                        <h3>Location</h3>
+                                        <p>{{ user.location  || "This user hasn't provided a location."}}</p>
+                                    </div>
+                                </md-list-item>
+                                <md-list-item class="md-2-line" md-sticky>
+                                    <ng-md-icon icon="work" class="md-avatar-icon"></ng-md-icon>
+                                    <div class="md-list-item-text">
+                                        <h3>Company</h3>
+                                        <p>{{ user.company  || "This user hasn't provided a company."}}</p>
+                                    </div>
+                                </md-list-item>
+                                <md-list-item class="md-2-line" md-sticky ng-href="{{user.blog}}">
+                                    <ng-md-icon icon="mode_edit" class="md-avatar-icon"></ng-md-icon>
+                                    <div class="md-list-item-text">
+                                        <h3>Blog</h3>
+                                        <p>{{ user.blog  || 'This user has no blog.'}}</p>
                                     </div>
                                 </md-list-item>
                             </md-list>
@@ -48,11 +64,32 @@
                         <section>
                             <md-subheader class="md-primary">What They're Up To</md-subheader>
                             <md-list class="info-list">
-                                <md-list-item class="md-2-line" ng-repeat="item in user.stuff">
-                                    <ng-md-icon icon="{{item.icon}}" class="md-avatar-icon"></ng-md-icon>
+                                <md-list-item class="md-2-line"  ng-click="selectedIndex = 1" >
+                                    <ng-md-icon icon="github-circle" class="md-avatar-icon"></ng-md-icon>
                                     <div class="md-list-item-text">
-                                        <h3>{{ item.value }}</h3>
-                                        <p>{{ item.title }}</p>
+                                        <h3>Repositories</h3>
+                                        <p>{{ user.public_repos }}</p>
+                                    </div>
+                                </md-list-item>
+                                <md-list-item class="md-2-line" ng-click="selectedIndex = 2" >
+                                    <ng-md-icon icon="people_outline" class="md-avatar-icon"></ng-md-icon>
+                                    <div class="md-list-item-text">
+                                        <h3>Following</h3>
+                                        <p>{{ user.following }}</p>
+                                    </div>
+                                </md-list-item>
+                                <md-list-item class="md-2-line">
+                                    <ng-md-icon icon="people" class="md-avatar-icon"></ng-md-icon>
+                                    <div class="md-list-item-text">
+                                        <h3>Followers</h3>
+                                        <p>{{ user.followers }}</p>
+                                    </div>
+                                </md-list-item>
+                                <md-list-item class="md-2-line">
+                                    <ng-md-icon icon="access_time" class="md-avatar-icon"></ng-md-icon>
+                                    <div class="md-list-item-text">
+                                        <h3>Last Updated Profile Date</h3>
+                                        <p>{{ user.updated_at | date }}</p>
                                     </div>
                                 </md-list-item>
                             </md-list>

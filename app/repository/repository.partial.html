@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="repository-card-body">
-            <md-tabs md-dynamic-height md-swipe-content md-border-bottom md-stretch-tabs="auto" class="md-primary">
+            <md-tabs md-selected="selectedIndex" md-dynamic-height md-swipe-content md-border-bottom md-stretch-tabs="auto" class="md-primary">
                 <md-tab label="About">
                     <md-content>
                         <section>
@@ -24,11 +24,50 @@
                             <md-list>
                                 <md-list class="info-list">
 
-                                    <md-list-item class="md-2-line">
+                                    <md-list-item class="md-2-line" ng-href="{{repository.homepage}}"  target="_blank">
                                         <ng-md-icon icon="home" class="md-avatar-icon"></ng-md-icon>
+                                        <div class="md-list-item-text">
+                                            <h3>Homepage</h3>
+                                            <p>{{ repository.homepage || 'No homepage.' }}</p>
+                                        </div>
+                                    </md-list-item>
+                                    <md-list-item class="md-2-line">
+                                        <ng-md-icon icon="description" class="md-avatar-icon"></ng-md-icon>
                                         <div class="md-list-item-text">
                                             <h3>Description</h3>
                                             <p>{{ repository.description || 'No description.' }}</p>
+                                        </div>
+                                    </md-list-item>
+
+                                    <md-list-item class="md-2-line">
+                                        <ng-md-icon icon="done" class="md-avatar-icon"></ng-md-icon>
+                                        <div class="md-list-item-text">
+                                            <h3>Subscribers</h3>
+                                            <p>{{ repository.subscribers_count + ' subscribers.' || 'No subscribers.' }}</p>
+                                        </div>
+                                    </md-list-item>
+
+                                    <md-list-item class="md-2-line">
+                                        <ng-md-icon icon="remove_red_eye" class="md-avatar-icon"></ng-md-icon>
+                                        <div class="md-list-item-text">
+                                            <h3>Watchers</h3>
+                                            <p>{{ repository.watchers + ' watchers.' || 'No watchers.' }}</p>
+                                        </div>
+                                    </md-list-item>
+
+                                    <md-list-item class="md-2-line" ng-click="selectedIndex = 2">
+                                        <ng-md-icon icon="people" class="md-avatar-icon"></ng-md-icon>
+                                        <div class="md-list-item-text">
+                                            <h3>Contributors</h3>
+                                            <p>{{ contributors.length + ' contributors.' || 'No contributors.' }}</p>
+                                        </div>
+                                    </md-list-item>
+
+                                    <md-list-item class="md-2-line" ng-click="selectedIndex = 1">
+                                        <ng-md-icon icon="content_copy" class="md-avatar-icon"></ng-md-icon>
+                                        <div class="md-list-item-text">
+                                            <h3>Forks</h3>
+                                            <p>{{ repository.forks + ' forks.' || 'No forks.' }}</p>
                                         </div>
                                     </md-list-item>
 
