@@ -29,7 +29,7 @@ gulp.task('app:JS', function () {
         .pipe(ngAnnotate())
         .pipe(angularFilesort())
         .pipe(concat('main.js'))
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('app/cache'))
         .pipe(livereload());
 });
@@ -53,7 +53,7 @@ gulp.task('app:HTML', function () {
     return gulp.src(['app/**/*.html', '!app/index.html'])
         .pipe(minifyHTML())
         .pipe(templateCache('partials.js', {module: 'ngGitHub', standalone: false}))
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('app/cache'))
         .pipe(livereload());
 });
@@ -66,7 +66,7 @@ gulp.task('3rdParty:JS', function () {
     return gulp.src(mainBowerFiles())
         .pipe(gulpFilter('**/*.js'))
         .pipe(wiredep())
-        // .pipe(uglify()) 
+        .pipe(uglify())
         .pipe(concat('3rdParty.js'))
         .pipe(gulp.dest('app/cache'));
 
